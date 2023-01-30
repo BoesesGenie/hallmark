@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import ROUTES from '../../../../../application/router/routes';
 import NavButton from './components/NavButton';
 import { ReactComponent as Menu } from './assets/Menu.svg';
@@ -27,6 +27,18 @@ const Navigation: FC = () => {
   const toggleOpened = () => {
     setIsOpened(!isOpened);
   };
+
+  useEffect(() => {
+    if (isOpened) {
+      document.body.classList.add('fixedPos');
+    } else {
+      document.body.classList.remove('fixedPos');
+    }
+
+    return () => {
+      document.body.classList.remove('fixedPos');
+    };
+  }, [isOpened]);
 
   return (
     <>
