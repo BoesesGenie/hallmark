@@ -34,7 +34,6 @@ const About: FC = () => {
       <motion.div
         className="about__img-block"
         transition={transition}
-        style={{ originX: 0 }}
         initial={{
           '--perspective': '150px',
           '--rotateY': '70deg',
