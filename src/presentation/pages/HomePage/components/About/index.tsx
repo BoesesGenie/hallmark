@@ -31,30 +31,38 @@ const About: FC = () => {
           in doors and hardware, as well as extended knowledge of construction industry.
         </Typo.P>
       </motion.div>
-      <div className="about__img-block">
-        <motion.img
+      <motion.div
+        className="about__img-block"
+        transition={transition}
+        style={{ originX: 0 }}
+        initial={{
+          '--perspective': '150px',
+          '--rotateY': '70deg',
+        } as any}
+        whileInView={{
+          '--perspective': '150px',
+          '--rotateY': '0deg',
+        } as any}
+      >
+        <img
           src={about1}
           alt="About us"
           className="about__img1"
-          transition={transition}
-          style={{ originX: 0 }}
-          initial={{
-            transform: 'perspective(150px) rotateY(70deg)'
+          style={{
+            transform: 'perspective(var(--perspective)) rotateY(var(--rotateY))',
+            transformOrigin: 'left',
           }}
-          whileInView={{ transform: 'perspective(150px) rotateY(0deg)' }}
         />
-        <motion.img
+        <img
           src={about2}
           alt="About us"
-          transition={transition}
-          style={{ originX: 0 }}
           className="about__img2"
-          initial={{
-            transform: 'perspective(150px) rotateY(70deg)'
+          style={{
+            transform: 'perspective(var(--perspective)) rotateY(var(--rotateY))',
+            transformOrigin: 'left',
           }}
-          whileInView={{ transform: 'perspective(150px) rotateY(0deg)' }}
         />
-      </div>
+      </motion.div>
     </section>
   );
 };
