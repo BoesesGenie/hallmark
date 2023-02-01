@@ -8,32 +8,31 @@ const BenefitsGallery: FC = () => {
   const ref = useRef(null);
   const [activeImage, setActiveImage] = useState<number>(data[0].id);
   const [classNameContainer, setClassNameContainer] = useState('benefits-gallery__active-image-container');
-  const [intervalId, setIntervalId] = useState<number|undefined>(undefined);
+  const [timeoutId, setTimeoutId] = useState<number|undefined>(undefined);
   const controls = useAnimationControls();
   const isInView = useInView(ref);
 
   useEffect(() => {
-    if (!isInView && intervalId) {
-      window.clearTimeout(intervalId);
-      setIntervalId(undefined);
+    if (!isInView && timeoutId) {
+      window.clearTimeout(timeoutId);
+      setTimeoutId(undefined);
 
       return;
     }
 
-    if (!isInView && !intervalId) {
+    if (!isInView && !timeoutId) {
       doChangeImage(data[0].id);
     }
 
-    const currentIntervalId = window.setTimeout(() => {
+    const currentTimeoutlId = window.setTimeout(() => {
       const nextImage = activeImage < data.length ? activeImage + 1 : 1;
-      console.log('run');
 
       doChangeImage(nextImage);
     }, 3000);
 
-    setIntervalId(currentIntervalId);
+    setTimeoutId(currentTimeoutlId);
 
-    return () => window.clearTimeout(intervalId);
+    return () => window.clearTimeout(timeoutId);
   }, [isInView, activeImage]);
 
   const orderedData = useMemo(() => {
@@ -55,7 +54,7 @@ const BenefitsGallery: FC = () => {
       return;
     }
 
-    window.clearTimeout(intervalId);
+    window.clearTimeout(timeoutId);
 
     doChangeImage(id);
   };
@@ -79,7 +78,7 @@ const BenefitsGallery: FC = () => {
   };
   
   const onStartDoor = () => {
-    window.clearTimeout(intervalId);
+    window.clearTimeout(timeoutId);
     setClassNameContainer('benefits-gallery__active-image-container');
   };
 
