@@ -1,19 +1,47 @@
-import { motion, useAnimationControls } from 'framer-motion';
-import React, { FC, useMemo, useState } from 'react';
+import { motion, useAnimationControls, useInView } from 'framer-motion';
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
+import { Typo } from '../../../../ui-kit';
 import data from './data';
 import './styles.sass';
 
 const BenefitsGallery: FC = () => {
+  const ref = useRef(null);
   const [activeImage, setActiveImage] = useState<number>(data[0].id);
   const [classNameContainer, setClassNameContainer] = useState('benefits-gallery__active-image-container');
+  const [intervalId, setIntervalId] = useState<number|undefined>(undefined);
   const controls = useAnimationControls();
+  const isInView = useInView(ref);
+
+  useEffect(() => {
+    if (!isInView && intervalId) {
+      window.clearTimeout(intervalId);
+      setIntervalId(undefined);
+
+      return;
+    }
+
+    if (!isInView && !intervalId) {
+      doChangeImage(data[0].id);
+    }
+
+    const currentIntervalId = window.setTimeout(() => {
+      const nextImage = activeImage < data.length ? activeImage + 1 : 1;
+      console.log('run');
+
+      doChangeImage(nextImage);
+    }, 3000);
+
+    setIntervalId(currentIntervalId);
+
+    return () => window.clearTimeout(intervalId);
+  }, [isInView, activeImage]);
 
   const orderedData = useMemo(() => {
     const result = [];
 
     for (let i = activeImage, j = 0; j < data.length; j++) {
       let index = (i <= data.length ? i : i - data.length) - 1;
-      
+
       result.push(data[index]);
 
       i++;
@@ -27,6 +55,12 @@ const BenefitsGallery: FC = () => {
       return;
     }
 
+    window.clearTimeout(intervalId);
+
+    doChangeImage(id);
+  };
+
+  const doChangeImage = (id: number) => {
     const mult = id - 1;
 
     controls.start({
@@ -37,36 +71,67 @@ const BenefitsGallery: FC = () => {
   };
 
   const onCompleteDoor = () => {
+    const nextImage = activeImage < data.length ? activeImage + 1 : 1;
+
+    doChangeImage(nextImage);
+
     setClassNameContainer('benefits-gallery__active-image-container benefits-gallery__active-image-container_completed');
   };
   
   const onStartDoor = () => {
+    window.clearTimeout(intervalId);
     setClassNameContainer('benefits-gallery__active-image-container');
   };
 
   return (
-    <>
-      <ol className="benefits-gallery__switcher">
-        {data.map(({ id, name }) => (
-          <li key={id} onClick={changeImage(id)}>{name}</li>
-        ))}
-      </ol>
+    <section className="benefits-gallery" ref={ref}>
+      <motion.div
+        style={{ originY: 0 }}
+        transition={{ duration: 0.7 }}
+        initial={{
+          opacity: 0,
+          transform: 'scaleY(1.2)',
+        }}
+        whileInView={{
+          opacity: 1,
+          transform: 'scaleY(1)',
+        }}
+      >
+        <Typo.H1 className="benefits-gallery__title">Our benefits</Typo.H1>
+        <ol className="benefits-gallery__switcher">
+          {data.map(({ id, name }) => {
+            let className = 'benefits-gallery__switcher-item';
+
+            if (id === activeImage && isInView) {
+              className = 'benefits-gallery__switcher-item benefits-gallery__switcher-item_active';
+            }
+
+            return (
+              <li
+                key={id}
+                className={className}
+                onClick={changeImage(id)}
+              >{name}</li>
+            );
+          })}
+        </ol>
+      </motion.div>
       <div className="benefits-gallery__images">
-        <motion.div
-          className="benefits-gallery__images-inner"
-          transition={{ duration: 0.7 }}
-          initial={{
-            '--perspective': '150px',
-            '--rotateY': '70deg',
-          } as any}
-          whileInView={{
-            '--perspective': '150px',
-            '--rotateY': '0deg',
-          } as any}
-          onAnimationStart={onStartDoor}
-          onAnimationComplete={onCompleteDoor}
-        >
-          <div className={classNameContainer}>
+        <div className="benefits-gallery__images-inner">
+          <motion.div
+            className={classNameContainer}
+            transition={{ duration: 0.7 }}
+            initial={{
+              '--perspective': '150px',
+              '--rotateY': '70deg',
+            } as any}
+            whileInView={{
+              '--perspective': '150px',
+              '--rotateY': '0deg',
+            } as any}
+            onAnimationStart={onStartDoor}
+            onAnimationComplete={onCompleteDoor}
+          >
             {data.map(({ id, name, image }) => {
               return (
                 <motion.img
@@ -88,15 +153,15 @@ const BenefitsGallery: FC = () => {
                 />
               );
             })}
-          </div>
+          </motion.div>
           {orderedData.map(({ id, name, image }) => {
             return (
               <img key={id} src={image} alt={name} className="benefits-gallery__image" />
             );
           })}
-        </motion.div>
+        </div>
       </div>
-    </>
+    </section>
   );
 };
 

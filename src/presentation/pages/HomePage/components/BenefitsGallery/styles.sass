@@ -1,4 +1,10 @@
 .benefits-gallery
+  padding: 80px 0 40px
+
+  &__title
+    padding: 0 16px
+    margin-bottom: 16px
+
   &__images
     margin: 32px 0 0 16px
     overflow-x: hidden
@@ -33,17 +39,35 @@
     list-style: none
     counter-reset: benefits-gallery-counter
 
-    & li
-      padding: 24px 0
-      border-bottom: 2px solid rgba(0, 0, 0, 0.25)
-      font-family: 'Nunito', Arial, sans-serif
-      font-weight: 700
-      font-size: 16px
-      line-height: 20px
-      color: rgba(0, 0, 0, 0.25)
-      counter-increment: benefits-gallery-counter
-      display: flex
+  &__switcher-item
+    position: relative
+    padding: 24px 0
+    border-bottom: 2px solid rgba(0, 0, 0, 0.25)
+    font-family: 'Nunito', Arial, sans-serif
+    font-weight: 700
+    font-size: 16px
+    line-height: 20px
+    color: rgba(0, 0, 0, 0.25)
+    counter-increment: benefits-gallery-counter
+    display: flex
 
-      &::before
-        content: '0' counter(benefits-gallery-counter)
-        width: 56px
+    &::before
+      content: '0' counter(benefits-gallery-counter)
+      width: 56px
+
+    &::after
+      content: ''
+      display: block
+      position: absolute
+      bottom: -2px
+      width: 0
+      height: 2px
+      background: #2A8FFF
+      transition: width 0s linear
+
+    &_active
+      color: #000
+
+      &::after
+        transition: width 3s linear
+        width: 100%
