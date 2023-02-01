@@ -70,11 +70,17 @@ const BenefitsGallery: FC = () => {
   };
 
   const onCompleteDoor = () => {
-    const nextImage = activeImage < data.length ? activeImage + 1 : 1;
-
-    doChangeImage(nextImage);
+    
 
     setClassNameContainer('benefits-gallery__active-image-container benefits-gallery__active-image-container_completed');
+
+    const currentTimeoutlId = window.setTimeout(() => {
+      const nextImage = activeImage < data.length ? activeImage + 1 : 1;
+      
+      doChangeImage(nextImage);
+    }, 2300);
+
+    setTimeoutId(currentTimeoutlId);
   };
   
   const onStartDoor = () => {
