@@ -32,7 +32,7 @@ const Offer: FC = () => {
       </div>
       <motion.div
         className="offer__carousel"
-        transition={{ duration: 2, repeat: Infinity }}
+        transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
         initial={{
           '--move': '0px',
         } as any}
