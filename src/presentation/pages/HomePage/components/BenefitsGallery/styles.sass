@@ -12,9 +12,20 @@
     width: 50%
     height: 50%
 
-    &_active
-      min-width: calc(100vw - 32px)
-      max-width: calc(100vw - 32px)
+  &__image-main
+    min-width: calc(100vw - 32px)
+    max-width: calc(100vw - 32px)
+    height: fit-content
+
+  &__active-image-container
+    min-width: calc(100vw - 32px)
+    max-width: calc(100vw - 32px)
+    display: flex
+    overflow-x: hidden
+    gap: 80px
+    
+    &_completed
+      background: #2A8FFF
 
   &__switcher
     padding: 0 16px 0

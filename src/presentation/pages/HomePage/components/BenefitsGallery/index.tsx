@@ -1,10 +1,12 @@
-import { motion } from 'framer-motion';
+import { motion, useAnimationControls } from 'framer-motion';
 import React, { FC, useMemo, useState } from 'react';
 import data from './data';
 import './styles.sass';
 
 const BenefitsGallery: FC = () => {
   const [activeImage, setActiveImage] = useState<number>(data[0].id);
+  const [classNameContainer, setClassNameContainer] = useState('benefits-gallery__active-image-container');
+  const controls = useAnimationControls();
 
   const orderedData = useMemo(() => {
     const result = [];
@@ -20,10 +22,26 @@ const BenefitsGallery: FC = () => {
     return result;
   }, [activeImage]);
 
-  const changeImage = (id: number) => {
-    return () => {
-      setActiveImage(id);
-    };
+  const changeImage = (id: number) => () => {
+    if (id === activeImage) {
+      return;
+    }
+
+    const mult = id - 1;
+
+    controls.start({
+      transform: `translateX(calc(-${100 * mult}% - ${80 * mult}px)) perspective(var(--perspective)) rotateY(var(--rotateY))`,
+    } as any);
+
+    setActiveImage(id);
+  };
+
+  const onCompleteDoor = () => {
+    setClassNameContainer('benefits-gallery__active-image-container benefits-gallery__active-image-container_completed');
+  };
+  
+  const onStartDoor = () => {
+    setClassNameContainer('benefits-gallery__active-image-container');
   };
 
   return (
@@ -45,27 +63,35 @@ const BenefitsGallery: FC = () => {
             '--perspective': '150px',
             '--rotateY': '0deg',
           } as any}
+          onAnimationStart={onStartDoor}
+          onAnimationComplete={onCompleteDoor}
         >
+          <div className={classNameContainer}>
+            {data.map(({ id, name, image }) => {
+              return (
+                <motion.img
+                  key={id}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 100,
+                    damping: 10,
+                    duration: 0.7,
+                  }}
+                  src={image}
+                  alt={name}
+                  className="benefits-gallery__image-main"
+                  style={{
+                    transform: 'perspective(var(--perspective)) rotateY(var(--rotateY))',
+                    transformOrigin: 'left',
+                  }}
+                  animate={controls}
+                />
+              );
+            })}
+          </div>
           {orderedData.map(({ id, name, image }) => {
-            let className = 'benefits-gallery__image';
-
-            if (id === activeImage) {
-              className += ' benefits-gallery__image_active';
-
-              return <img
-                key={id}
-                src={image}
-                alt={name}
-                className={className}
-                style={{
-                  transform: 'perspective(var(--perspective)) rotateY(var(--rotateY))',
-                  transformOrigin: 'left',
-                }}
-              />;
-            }
-
             return (
-              <img key={id} src={image} alt={name} className={className} />
+              <img key={id} src={image} alt={name} className="benefits-gallery__image" />
             );
           })}
         </motion.div>
