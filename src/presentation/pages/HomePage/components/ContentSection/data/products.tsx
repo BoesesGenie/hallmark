@@ -1,7 +1,7 @@
 import React from 'react';
-import photo1 from './assets/photo1.png';
-import photo2 from './assets/photo2.png';
-import photo3 from './assets/photo3.png';
+import photo1 from '../assets/produts1.png';
+import photo2 from '../assets/produts2.png';
+import photo3 from '../assets/produts3.png';
 
 const data = [
   {
@@ -19,6 +19,6 @@ const data = [
     image: photo3,
     text: 'Locks and Locksets, Exit Devices, Door Closers, Kick Plates, Hinges, Thresholds and Weatherstrip, Trim and Auxiliary, Key Cabinets, Cylinders and Key Blank',
   },
-] as const;
+];
 
 export default data;
