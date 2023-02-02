@@ -1,0 +1,26 @@
+.button
+  border-style: none
+  min-height: 56px
+  padding: 21px
+  display: flex
+  align-items: center
+  justify-content: center
+  background: linear-gradient(180deg, #010FB8 50%, #2A8FFF 50%)
+  background-size: 100% 200%
+  background-position: 0% 0%
+  font-family: 'Syncopate', Arial, sans-serif
+  font-weight: 700
+  font-size: 10px
+  line-height: 16px
+  text-transform: uppercase
+  color: #fff
+  text-decoration: none
+
+  &:active
+    animation: gradient 0.2s ease
+
+@keyframes gradient
+  from
+    background-position: 0% 0%
+  to
+    background-position: 0% -200%

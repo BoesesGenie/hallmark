@@ -1,3 +1,4 @@
+import Button from './components/Button';
 import Typo from './components/Typo';
 
-export { Typo };
+export { Button, Typo };
