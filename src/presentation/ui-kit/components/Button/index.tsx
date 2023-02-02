@@ -2,15 +2,28 @@ import React, { FC } from 'react';
 import { ButtonProps } from './types';
 import './styles.sass';
 
-const Button: FC<ButtonProps> = ({ href, target, children }) => {
+const Button: FC<ButtonProps> = ({ href, target, theme, onClick, children }) => {
+  let mixedClassName = 'button';
+
+  if (theme) {
+    mixedClassName += ` button_${theme}`;
+  }
+
   if (href) {
     return (
-      <a href={href} target={target} className="button">{children}</a>
+      <a
+        href={href}
+        target={target}
+        className={mixedClassName}
+        onClick={onClick}
+      >
+        {children}
+      </a>
     );
   }
 
   return (
-    <button className="button">{children}</button>
+    <button className={mixedClassName} onClick={onClick}>{children}</button>
   );
 };
 

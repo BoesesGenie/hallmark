@@ -7,6 +7,7 @@ import ContentSection from './components/ContentSection';
 import Offer from './components/Offer';
 import products from './components/ContentSection/data/products';
 import services from './components/ContentSection/data/services';
+import ProjectsCallery from './components/ProjectsGallery';
 import './styles.sass';
 
 const HomePage: FC = () => {
@@ -18,6 +19,7 @@ const HomePage: FC = () => {
       <ContentSection title="Our Products" data={products} className="home-page__products" />
       <CallAction />
       <ContentSection title="Our Services" data={services} className="home-page__services" />
+      <ProjectsCallery />
     </Layout>
   );
 };
