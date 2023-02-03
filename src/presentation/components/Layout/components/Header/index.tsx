@@ -36,12 +36,12 @@ const Header: FC<HeaderProps> = ({ withShowcase = false }) => {
       <div className={headerTopClass}>
         {withShowcase ? (
           (isInView ? (
-            <Logo onClick={() => navigate(ROUTES.home)} />
+            <Logo className='header__logo' onClick={() => navigate(ROUTES.home)} />
           ) : (
-            <LogoColored onClick={() => navigate(ROUTES.home)} />
+            <LogoColored className='header__logo' onClick={() => navigate(ROUTES.home)} />
           ))
         ) : (
-          <LogoDark onClick={() => navigate(ROUTES.home)} />
+          <LogoDark className='header__logo' onClick={() => navigate(ROUTES.home)} />
         )}
         <Navigation iconDark={iconDark} />
       </div>

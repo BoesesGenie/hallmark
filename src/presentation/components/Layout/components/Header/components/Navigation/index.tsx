@@ -52,8 +52,11 @@ const Navigation: FC<NavigationProps> = ({ iconDark }) => {
         (createPortal(
           <div className="navigation">
             <div className="navigation__top">
-              <Logo onClick={() => navigate(ROUTES.home)} />
-              <Close onClick={toggleOpened} />
+              <Logo className="navigation__logo" onClick={() => navigate(ROUTES.home)} />
+              <div className="navigation__right">
+                <div className="navigation__right-phone">Phone: (604) 371-0717</div>
+                <Close onClick={toggleOpened} />
+              </div>
             </div>
             <nav className="navigation__center">
               {navRoutes.map((item) => (
@@ -69,7 +72,10 @@ const Navigation: FC<NavigationProps> = ({ iconDark }) => {
           portalElement
         ))
       ) : (
-        <MenuIcon fill={iconDark ? 'black' : 'white'} onClick={toggleOpened} />
+        <div className="navigation__menu">
+          <div className={`navigation__menu-phone ${(iconDark && ' navigation__menu-phone_dark')}`}>Phone: (604) 371-0717</div>
+          <MenuIcon fill={iconDark ? 'black' : 'white'} onClick={toggleOpened} />
+        </div>
       )}
     </>
   );
