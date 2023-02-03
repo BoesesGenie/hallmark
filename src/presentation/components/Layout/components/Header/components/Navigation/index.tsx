@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../../../../../../application/router/routes';
 import NavButton from './components/NavButton';
 import MenuIcon from './components/MenuIcon';
@@ -10,6 +11,7 @@ import './styles.sass';
 
 const Navigation: FC<NavigationProps> = ({ iconDark }) => {
   const [isOpened, setIsOpened] = useState(false);
+  const navigate = useNavigate();
   const portalElement = document.getElementById('portal');
 
   const navRoutes = [
@@ -50,7 +52,7 @@ const Navigation: FC<NavigationProps> = ({ iconDark }) => {
         (createPortal(
           <div className="navigation">
             <div className="navigation__top">
-              <Logo />
+              <Logo onClick={() => navigate(ROUTES.home)} />
               <Close onClick={toggleOpened} />
             </div>
             <nav className="navigation__center">
