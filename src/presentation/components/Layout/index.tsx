@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { ReactComponent as Logo } from './assets/Logo.svg';
+import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import './styles.sass';
 
@@ -13,6 +14,7 @@ const Layout: FC<{ children?: ReactNode }> = ({ children }) => (
       <h1 className="layout__header-title">Doors and Hardware for residential construction industries</h1>
     </header>
     {children}
+    <Footer />
   </div>
 );
 

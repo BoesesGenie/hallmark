@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Button, Typo } from '../../../../ui-kit';
-import ContentAppear from '../ContentAppear';
+import ContentAppear from '../../../../components/ContentAppear';
 import './styles.sass';
 
 const CallAction: FC = () => (

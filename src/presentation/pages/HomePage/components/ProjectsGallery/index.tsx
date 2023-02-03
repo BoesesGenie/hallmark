@@ -1,13 +1,16 @@
 import React, { FC, useState } from 'react';
 import { motion, useAnimationControls } from 'framer-motion';
 import { Button, Typo } from '../../../../ui-kit';
-import ContentAppear from '../../components/ContentAppear';
+import ContentAppear from '../../../../components/ContentAppear';
 import data from './data';
 import arrow from './assets/arrow.svg';
 import './styles.sass';
 
 const ProjectsCallery: FC = () => {
   const [activeImage, setActiveImage] = useState<number>(data[0].id);
+  const [topTitleClass, setTopTitleClass] = useState<string>('');
+  const [prevTitle, setPrevTitle] = useState<string>(data[0].title);
+  const [nextTitle, setNextTitle] = useState<string>('');
   const controls = useAnimationControls();
 
   const onClick = (direction: 'left' | 'right') => {
@@ -27,8 +30,17 @@ const ProjectsCallery: FC = () => {
       controls.start({
         transform: `translateX(${move}%)`,
       } as any);
+      
+      const nextActive = direction === 'right' ? activeImage + 1 : activeImage - 1;
 
-      setActiveImage((direction === 'right' ? activeImage + 1 : activeImage - 1));
+      setTopTitleClass('');
+      if (nextTitle) {
+        setPrevTitle(nextTitle);
+      }
+
+      setNextTitle(data[nextActive - 1].title);
+      setActiveImage(nextActive);
+      window.setTimeout(() => setTopTitleClass('projects-gallery__title-animation-top'), 100);
     };
   };
 
@@ -58,10 +70,27 @@ const ProjectsCallery: FC = () => {
               }}
             >
               <img src={image} alt={title} />
-              <h2>{title}</h2>
             </motion.div>
           );
         })}
+        <div className="projects-gallery__title-animation-container">
+          <div className="projects-gallery__title-animation-first">
+            <div className={topTitleClass}>
+              <h2>{prevTitle}</h2>
+            </div>
+            <div className={topTitleClass}>
+              <h2>{nextTitle}</h2>
+            </div>
+          </div>
+          <div className="projects-gallery__title-animation-second">
+            <div className={topTitleClass}>
+              <h2>{prevTitle}</h2>
+            </div>
+            <div className={topTitleClass}>
+              <h2>{nextTitle}</h2>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="projects-gallery__controls">
         <div className="projects-gallery__count">01 — 0{data.length}</div>

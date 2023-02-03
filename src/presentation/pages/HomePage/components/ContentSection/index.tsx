@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import { Typo } from '../../../../ui-kit';
 import DoorImg from '../../components/DoorImg';
-import ContentAppear from '../../components/ContentAppear';
+import ContentAppear from '../../../../components/ContentAppear';
 import './styles.sass';
 
 export type ContentSectionData = {

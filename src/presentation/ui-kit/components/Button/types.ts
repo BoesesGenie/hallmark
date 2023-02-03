@@ -6,4 +6,5 @@ export interface ButtonProps {
   target?: string;
   theme?: 'circle';
   onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  className?: string;
 }
