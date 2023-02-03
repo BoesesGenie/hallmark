@@ -15,11 +15,12 @@ const Navigation: FC = () => {
       name: 'Our blog'
     },
     {
-      route: ROUTES.positions,
+      href: 'https://google.com',
+      target: '_blank',
       name: 'Open postions'
     },
     {
-      route: ROUTES.contacts,
+      href: '#contactUs',
       name: 'Contact us'
     },
   ] as const;
@@ -49,8 +50,12 @@ const Navigation: FC = () => {
             <Close onClick={toggleOpened} />
           </div>
           <nav className="navigation__center">
-            {navRoutes.map(({ route, name }) => (
-              <NavButton key={name} route={route} name={name} />
+            {navRoutes.map((item) => (
+              <NavButton
+                key={item.name}
+                onClick={toggleOpened}
+                {...item}
+              />
             ))}
           </nav>
           <div className="navigation__bottom">Phone: (604) 371-0717</div>

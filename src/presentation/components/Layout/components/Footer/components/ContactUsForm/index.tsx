@@ -4,7 +4,7 @@ import './styles.sass';
 
 const ContactUsForm: FC = () => {
   return (
-    <section className="contact-us-form">
+    <section className="contact-us-form" id="contactUs">
       <Typo.H2 className="contact-us-form__title">Request a call back</Typo.H2>
       <Input label="Phone Number" className="contact-us-form__input" />
       <Input label="Email *" className="contact-us-form__input" />

@@ -1,10 +1,19 @@
 import React, { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../../../../../../application/router/routes';
 import { Typo } from '../../../../../../ui-kit';
 import stamp from './assets/stamp.svg';
 import './styles.sass';
 
 const Contacts: FC = () => {
+  const navigate = useNavigate();
+
+  const goToBlog = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    navigate(ROUTES.blog);
+  };
+
   return (
     <section className="contacts">
       <div className="contacts__data">
@@ -31,7 +40,7 @@ const Contacts: FC = () => {
       </div>
       <div className="contacts__nav">
         <div className="contacts__nav-links">
-          <a href={ROUTES.blog}>Our Blog</a>
+          <a href={ROUTES.blog} onClick={goToBlog}>Our Blog</a>
           <a href="https://google.com" target="_blank" rel="noreferrer">Open positions</a>
           <a href="https://linkedin.com">LinkedIn</a>
           <img src={stamp} alt="Hallmark" className="contacts__stamp" />
