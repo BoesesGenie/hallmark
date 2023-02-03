@@ -18,6 +18,10 @@ body {
   font-family: 'Nunito', Arial, sans-serif;
 }
 
+img {
+  display: block;
+}
+
 #root {
   display: flex;
   flex: 1;

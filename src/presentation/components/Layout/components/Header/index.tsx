@@ -22,14 +22,14 @@ const Header: FC<HeaderProps> = ({ withShowcase = false }) => {
   }
 
   useEffect(() => {
-    if (!isInView) {
+    if (!isInView || !withShowcase) {
       setHeaderTopClass('header__top header__top_not-in-view');
 
       return;
     }
 
     setHeaderTopClass('header__top');
-  }, [isInView]);
+  }, [isInView, withShowcase]);
 
   return (
     <header className={mixedClassName} ref={ref}>
