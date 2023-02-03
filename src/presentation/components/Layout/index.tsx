@@ -1,14 +1,11 @@
-import React, { FC, ReactNode, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import ROUTES from '../../../application/router/routes';
-import { ReactComponent as Logo } from './assets/Logo.svg';
+import React, { FC, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import Header from './components/Header';
 import Footer from './components/Footer';
-import Navigation from './components/Navigation';
+import { LayoutProps } from './types';
 import './styles.sass';
 
-const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
-  const navigate = useNavigate();
-
+const Layout: FC<LayoutProps> = ({ withShowcase = false, children }) => {
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -21,13 +18,7 @@ const Layout: FC<{ children?: ReactNode }> = ({ children }) => {
 
   return (
     <div className="layout">
-      <header className="layout__header">
-        <div className="layout__header-top">
-          <Logo onClick={() => navigate(ROUTES.home)} />
-          <Navigation />
-        </div>
-        <h1 className="layout__header-title">Doors and Hardware for residential construction industries</h1>
-      </header>
+      <Header withShowcase={withShowcase} />
       {children}
       <Footer />
     </div>

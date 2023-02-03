@@ -12,7 +12,7 @@ import './styles.sass';
 
 const HomePage: FC = () => {
   return (
-    <Layout>
+    <Layout withShowcase>
       <About />
       <BenefitsGallery />
       <Offer />
