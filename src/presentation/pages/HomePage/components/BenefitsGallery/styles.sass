@@ -1,3 +1,5 @@
+@use '../../../../sass-vars/breakpoints'
+  
 .benefits-gallery
   padding: 80px 0 40px
 
@@ -71,3 +73,33 @@
       &::after
         transition: width 3s linear
         width: 100%
+
+@media (min-width: breakpoints.$breakpoint-tablet)
+  .benefits-gallery
+    padding: 160px 0 88px
+
+    &__title
+      padding: 0 36px
+      margin-bottom: 40px
+
+    &__switcher
+      padding: 0 36px 0
+
+    &__images
+      margin: 80px 0 0 36px
+      width: calc(100vw - 36px)
+
+    &__images-inner
+      gap: 16px
+
+    &__active-image-container
+      min-width: 448px
+      max-width: 448px
+
+    &__image-main
+      min-width: 448px
+      max-width: 448px
+
+    &__image
+      width: auto
+      height: 151px
