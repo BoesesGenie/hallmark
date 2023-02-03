@@ -1,3 +1,5 @@
+@use '../../../../sass-vars/breakpoints'
+  
 .about
   margin-top: 80px
   padding: 0 16px 16px
@@ -16,3 +18,17 @@
 
   &__img2
     width: calc(67% - 4px)
+
+@media (min-width: breakpoints.$breakpoint-tablet)
+  .about
+    margin-top: 110px
+    padding: 0 36px 40px
+
+    &__txt
+      margin: 40px 0 64px
+
+    &__img1
+      width: calc(33% - 12px)
+
+    &__img2
+      width: calc(67% - 12px)
