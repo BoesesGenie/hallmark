@@ -104,3 +104,38 @@
     &__image
       width: auto
       height: 151px
+
+@media (min-width: breakpoints.$breakpoint-desktop)
+  .benefits-gallery
+    padding: 210px 0 140px
+    margin: 0 auto
+    max-width: 1440px
+    display: flex
+    gap: 128px
+
+    &__title
+      padding: 20px 56px 0
+      margin-bottom: 40px
+
+    &__switcher
+      padding: 0 56px 0
+
+    &__images
+      margin: 0
+
+    &__image
+      height: 156px
+
+    &__active-image-container
+      min-width: 320px
+      max-width: 320px
+      height: 420px
+
+    &__image-main
+      min-width: auto
+      max-width: auto
+      height: 100%
+
+    & > div
+      width: calc(50% - 64px)
+
