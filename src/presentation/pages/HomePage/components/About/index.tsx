@@ -22,7 +22,7 @@ const About: FC = () => {
           transform: 'scaleY(1)',
         }}
       >
-        <Typo.H1>About us</Typo.H1>
+        <Typo.H1 className="about__title">About us</Typo.H1>
         <Typo.P className="about__txt">
           We specialize in supply, installation and maintenance of architectural doors,
           hardware and automatic door operators for residential, commercial, institutional

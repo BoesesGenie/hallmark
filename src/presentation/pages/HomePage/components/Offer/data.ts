@@ -25,6 +25,26 @@ const data = [
     id: 5,
     image: logo5
   },
+  {
+    id: 6,
+    image: logo1,
+  },
+  {
+    id: 7,
+    image: logo2
+  },
+  {
+    id: 8,
+    image: logo3
+  },
+  {
+    id: 9,
+    image: logo4
+  },
+  {
+    id: 10,
+    image: logo5
+  },
 ] as const;
 
 export default data;
