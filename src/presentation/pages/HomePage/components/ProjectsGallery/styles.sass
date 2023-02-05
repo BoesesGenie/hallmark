@@ -1,3 +1,5 @@
+@use '../../../../sass-vars/breakpoints'
+  
 .projects-gallery
   padding: 80px 0 32px
   display: flex
@@ -102,3 +104,57 @@
     & button:last-child img
       transform: rotate(180deg)
       
+@media (min-width: breakpoints.$breakpoint-tablet)
+  .projects-gallery
+    gap: 40px
+    padding-bottom: 40px
+
+    &__title
+      padding: 0 36px
+
+    &__images
+      padding-left: 36px
+      background: linear-gradient(90deg, #2A8FFF calc(100vw - 72px), #fff 36px)
+      background-position: 36px
+
+      & h2
+        font-size: 32px
+        line-height: 32px
+        width: 416px
+
+    &__title-animation-container
+      left: 36px
+      bottom: 50px
+      padding: 0 40px
+      width: calc(100vw - 72px)
+      height: 64px
+
+    &__title-animation-first
+      left: 36px
+      height: 32px
+      width: calc(100% - 72px)
+
+      & div
+        height: 32px
+
+    &__title-animation-second
+      left: 36px
+      height: 32px
+      width: calc(100% - 72px)
+
+      & div
+        height: 32px
+
+    &__title-animation-top
+      transform: translateY(-32px)
+      height: 32px
+
+    &__image-container
+      min-width: calc(100vw - 72px)
+      height: auto
+
+      &_active
+        margin-right: 8px
+
+    &__controls
+      padding: 0 36px
