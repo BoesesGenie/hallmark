@@ -1,3 +1,5 @@
+@use '../../../../../../sass-vars/breakpoints'
+
 .contacts
   display: flex
   flex-direction: column
@@ -62,3 +64,31 @@
     line-height: 16px
     text-transform: uppercase
     color: #7E7E7E
+
+@media (min-width: breakpoints.$breakpoint-tablet)
+  .contacts
+    gap: 40px
+
+    &__data
+      flex-direction: row
+      gap: 24px
+
+    &__warehouse
+      width: 333px
+
+    &__text
+      font-size: 12px
+      line-height: 20px
+
+    &__phone-email
+      flex: 1
+
+    &__stamp
+      display: none
+
+    &__nav
+      flex-direction: row
+      justify-content: space-between
+
+    &__nav-links
+      flex-direction: row-reverse

@@ -1,3 +1,5 @@
+@use '../../../../sass-vars/breakpoints'
+  
 .footer
   padding: 80px 16px 32px
   background: #FAFAFA
@@ -5,5 +7,29 @@
   flex-direction: column
   gap: 40px
 
+  &__stamp
+    display: none
+
   &__text
     margin: 16px 0 40px
+
+@media (min-width: breakpoints.$breakpoint-tablet)
+  .footer
+    padding: 120px 46px 32px
+    gap: 80px
+
+    & > div
+      display: flex
+      justify-content: space-between
+      align-items: center
+
+      & > div
+        width: 464px
+
+    &__text
+      margin: 24px 0 0
+
+    &__stamp
+      display: block
+      width: 112px
+      height: 112px

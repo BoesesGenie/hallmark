@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../../../../../../application/router/routes';
 import { Typo } from '../../../../../../ui-kit';
-import stamp from './assets/stamp.svg';
+import stamp from '../../assets/stamp.svg';
 import './styles.sass';
 
 const Contacts: FC = () => {
@@ -17,7 +17,7 @@ const Contacts: FC = () => {
   return (
     <section className="contacts">
       <div className="contacts__data">
-        <div>
+        <div className="contacts__warehouse">
           <h3 className="contacts__title">Warehouse</h3>
           <Typo.P className="contacts__text">
             Hallmark Hardware Corporation<br />
