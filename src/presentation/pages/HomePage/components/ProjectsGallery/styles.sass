@@ -158,3 +158,33 @@
 
     &__controls
       padding: 0 36px
+
+@media (min-width: breakpoints.$breakpoint-desktop)
+  .projects-gallery
+    padding-top: 92px
+    max-width: 1440px
+    margin: 0 auto
+    gap: 32px
+
+    &__title
+      padding: 0 56px
+
+    &__images
+      max-width: 100%
+      padding-left: 56px
+      background: linear-gradient(90deg, #2A8FFF calc(100% - 112px), #fff 56px)
+      background-position: 56px
+      overflow: inherit
+
+    &__image-container
+      min-width: calc(100% - 56px)
+
+    &__controls
+      padding: 0 56px
+
+    &__title-animation-container
+      left: 56px
+      bottom: 22px
+      padding: 0 32px
+      width: calc(100% - 120px)
+      height: 64px
