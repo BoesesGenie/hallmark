@@ -28,15 +28,17 @@ const ContentSection: FC<ContentSectionProps> = ({ title, data, className }) => 
       <ContentAppear>
         <Typo.H1>{title}</Typo.H1>
       </ContentAppear>
-      {data.map(({ title, image, text }) => (
-        <article className="content-section__article" key={image}>
-          <DoorImg src={image} alt="Our Products" />
-          <ContentAppear>
-            <Typo.H2 className="content-section__article-title">{title}</Typo.H2>
-            <Typo.P>{text}</Typo.P>
-          </ContentAppear>
-        </article>
-      ))}
+      <div className="content-section__article-container">
+        {data.map(({ title, image, text }) => (
+          <article className="content-section__article" key={image}>
+            <DoorImg src={image} alt="Our Products" />
+            <ContentAppear>
+              <Typo.H2 className="content-section__article-title">{title}</Typo.H2>
+              <Typo.P className="content-section__text">{text}</Typo.P>
+            </ContentAppear>
+          </article>
+        ))}
+      </div>
     </section>
   );
 };

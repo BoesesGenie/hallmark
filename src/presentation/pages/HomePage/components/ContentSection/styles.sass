@@ -1,3 +1,5 @@
+@use '../../../../sass-vars/breakpoints'
+
 .content-section
   padding: 0 16px 40px
 
@@ -6,3 +8,21 @@
 
   &__article-title
     margin: 24px 0 12px
+
+@media (min-width: breakpoints.$breakpoint-tablet)
+  .content-section
+    padding: 0 36px 96px
+
+    &__article-container
+      display: flex
+      gap: 24px
+      width: 100%
+      flex-wrap: wrap
+
+    &__article
+      padding: 40px 0 0
+      width: calc(50% - 12px)
+
+    &__text
+      font-size: 12px
+      line-height: 16px
