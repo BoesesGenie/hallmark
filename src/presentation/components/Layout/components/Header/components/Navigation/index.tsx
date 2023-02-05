@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '../../../../../../ui-kit';
 import ROUTES from '../../../../../../../application/router/routes';
 import NavButton from './components/NavButton';
 import MenuIcon from './components/MenuIcon';
@@ -73,7 +74,10 @@ const Navigation: FC<NavigationProps> = ({ iconDark }) => {
         ))
       ) : (
         <div className="navigation__menu">
+          <a href={ROUTES.blog} className={`navigation__top-link ${(iconDark && ' navigation__top-link_dark')}`}>Our Blog</a>
+          <a href="https://google.com" className={`navigation__top-link ${(iconDark && ' navigation__top-link_dark')}`} target="_blank" rel="noreferrer">Open positions</a>
           <div className={`navigation__menu-phone ${(iconDark && ' navigation__menu-phone_dark')}`}>Phone: (604) 371-0717</div>
+          <Button className={`navigation__contact-us ${(iconDark && ' navigation__contact-us_dark')}`} href="#contactUs">Contact us</Button>
           <MenuIcon fill={iconDark ? 'black' : 'white'} onClick={toggleOpened} />
         </div>
       )}

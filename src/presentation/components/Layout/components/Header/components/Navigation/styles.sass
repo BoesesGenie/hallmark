@@ -1,5 +1,5 @@
 @use '../../../../../../sass-vars/breakpoints'
-  
+
 .navigation
   position: fixed
   top: 0
@@ -25,6 +25,9 @@
     display: flex
     justify-content: space-between
     align-items: center
+
+  &__top-link
+    display: none
 
   &__right
     display: flex
@@ -82,3 +85,56 @@
 
     &__center
       gap: 40px
+
+.button.navigation__contact-us
+  display: none
+
+@media (min-width: breakpoints.$breakpoint-desktop)
+  .navigation
+    &__contact-us
+      display: block
+
+    &__menu
+      flex-grow: 1
+      justify-content: flex-end
+
+    &__top-link
+      display: block
+      ont-family: 'Syncopate'
+      font-weight: 700
+      font-size: 10px
+      line-height: 16px
+      text-transform: uppercase
+      color: #FFFFFF
+      text-decoration: none
+      margin-right: auto
+
+      &:first-child
+        margin: 0px 0px 0px 96px
+
+      &_dark
+        color: #000
+
+  .button.navigation__contact-us
+    display: flex
+    background: transparent
+    border: 1px solid white
+    min-height: 40px
+    padding: 0 21px
+    width: 182px
+
+    &_dark
+      color: #010FB8
+      background: linear-gradient(180deg, #fff 50%, #010FB8 50%)
+      border-color: #010FB8
+      background-size: 100% 200%
+      background-position: 0% 0%
+      
+      &:active
+        animation: gradient 0.2s ease
+
+@keyframes gradient
+  from
+    background-position: 0% 0%
+  to
+    background-position: 0% -200%
