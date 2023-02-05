@@ -1,3 +1,5 @@
+@use '../../../../sass-vars/breakpoints'
+  
 .offer
   background: #000
   padding-bottom: 40px
@@ -42,3 +44,24 @@
 
     & img
       width: 88px
+
+@media (min-width: breakpoints.$breakpoint-tablet)
+  .offer
+    padding-bottom: 80px
+
+    &__title
+      font-size: 48px
+      line-height: 48px
+
+    &__content
+      padding: 120px 135px 80px
+
+    &__carousel
+      height: 306px
+
+    &__carousel-item
+      height: 304px
+      min-width: 304px
+
+      & img
+        width: 176px
