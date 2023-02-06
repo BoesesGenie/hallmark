@@ -23,3 +23,24 @@
 
     & article
       width: calc(50% - 30px)
+
+@media (min-width: breakpoints.$breakpoint-desktop)
+  .posts-list
+    max-width: 1328px
+    margin: 108px auto 0
+    padding: 0
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr 1fr
+    grid-gap: 18px
+
+    & article
+      width: 100%
+
+      &:nth-child(2)
+        margin-top: 37px
+
+      &:nth-child(3)
+        margin-top: 37px
+
+    &__image
+      max-width: 100%
