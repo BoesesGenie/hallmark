@@ -92,3 +92,24 @@
 
     &__nav-links
       flex-direction: row-reverse
+
+@media (min-width: breakpoints.$breakpoint-desktop)
+  .contacts
+    width: 100%
+
+    &__data
+      justify-content: space-between
+
+    &__phone-email
+      flex: 0
+      min-width: 768px
+      justify-content: flex-start
+      gap: 96px
+
+    &__nav
+      flex-direction: row-reverse
+      
+    &__nav-links
+      min-width: 768px
+      justify-content: flex-end
+      gap: 116px

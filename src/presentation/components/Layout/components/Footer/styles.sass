@@ -33,3 +33,25 @@
       display: block
       width: 112px
       height: 112px
+
+@media (min-width: breakpoints.$breakpoint-desktop)
+  .footer
+    max-width: 1440px
+    margin: 0 auto
+    padding: 120px 56px 32px
+    flex-direction: row
+    flex-wrap: wrap
+    gap: 64px
+    align-items: flex-start
+    justify-content: space-between
+
+    &__wrapper
+      background: #FAFAFA
+
+    &__title
+      font-size: 48px
+      line-height: 56px
+      margin-top: 18px
+
+    &__stamp
+      display: none
