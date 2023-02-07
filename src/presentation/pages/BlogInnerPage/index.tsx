@@ -47,19 +47,19 @@ const BlogInnerPage: FC = () => {
         <section className="blog-inner-page__list">
           <a href={ROUTES.blog} onClick={onAnchorClick} className="blog-inner-page__list-link">Read more from Hallmark Hardware</a>
           <div className="blog-inner-page__posts">
-            <a href={`${ROUTES.blog}/1`} className="blog-inner-page__list-post-link">
+            <a href={`${ROUTES.blog}/1`} onClick={onAnchorClick} className="blog-inner-page__list-post-link">
               <article>
                 <img src={image} alt="Hallmark" className="blog-inner-page__list-image" />
                 <h4 className="blog-inner-page__list-title">The Importance of Proper Door Hardware for Building Security</h4>
               </article>
             </a>
-            <a href={`${ROUTES.blog}/1`} className="blog-inner-page__list-post-link">
+            <a href={`${ROUTES.blog}/1`} onClick={onAnchorClick} className="blog-inner-page__list-post-link">
               <article>
                 <img src={image} alt="Hallmark" className="blog-inner-page__list-image" />
                 <h4 className="blog-inner-page__list-title">The Importance of Proper Door Hardware for Building Security</h4>
               </article>
             </a>
-            <a href={`${ROUTES.blog}/1`} className="blog-inner-page__list-post-link">
+            <a href={`${ROUTES.blog}/1`} onClick={onAnchorClick} className="blog-inner-page__list-post-link">
               <article>
                 <img src={image} alt="Hallmark" className="blog-inner-page__list-image" />
                 <h4 className="blog-inner-page__list-title">The Importance of Proper Door Hardware for Building Security</h4>
