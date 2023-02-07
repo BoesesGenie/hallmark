@@ -1,55 +1,34 @@
 import React, { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ROUTES from '../../../../../application/router/routes';
 import { Typo } from '../../../../ui-kit';
 import MainPost from '../MainPost';
-import image from './assets/image.jpg';
+import data from './data';
 import './styles.sass';
 
 const PostsList: FC = () => {
-  const title = 'Advice and resources for AAPI Business Owners';
+  const navigate = useNavigate();
+
+  const onAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    navigate(new URL(e.currentTarget.href).pathname);
+
+    return false;
+  };
 
   return (
     <section className="posts-list">
       <MainPost />
-      <article>
-        <img className="posts-list__image" src={image} alt={title} />
-        <Typo.BlH2 className="posts-list__title">{title}</Typo.BlH2>
-        <Typo.BlP>How Mielle Organics went viral on social media, and what that virality means for the company initi...</Typo.BlP>
-      </article>
-      <article>
-        <img className="posts-list__image" src={image} alt={title} />
-        <Typo.BlH2 className="posts-list__title">{title}</Typo.BlH2>
-        <Typo.BlP>How Mielle Organics went viral on social media, and what that virality means for the company initi...</Typo.BlP>
-      </article>
-      <article>
-        <img className="posts-list__image" src={image} alt={title} />
-        <Typo.BlH2 className="posts-list__title">{title}</Typo.BlH2>
-        <Typo.BlP>How Mielle Organics went viral on social media, and what that virality means for the company initi...</Typo.BlP>
-      </article>
-      <article>
-        <img className="posts-list__image" src={image} alt={title} />
-        <Typo.BlH2 className="posts-list__title">{title}</Typo.BlH2>
-        <Typo.BlP>How Mielle Organics went viral on social media, and what that virality means for the company initi...</Typo.BlP>
-      </article>
-      <article>
-        <img className="posts-list__image" src={image} alt={title} />
-        <Typo.BlH2 className="posts-list__title">{title}</Typo.BlH2>
-        <Typo.BlP>How Mielle Organics went viral on social media, and what that virality means for the company initi...</Typo.BlP>
-      </article>
-      <article>
-        <img className="posts-list__image" src={image} alt={title} />
-        <Typo.BlH2 className="posts-list__title">{title}</Typo.BlH2>
-        <Typo.BlP>How Mielle Organics went viral on social media, and what that virality means for the company initi...</Typo.BlP>
-      </article>
-      <article>
-        <img className="posts-list__image" src={image} alt={title} />
-        <Typo.BlH2 className="posts-list__title">{title}</Typo.BlH2>
-        <Typo.BlP>How Mielle Organics went viral on social media, and what that virality means for the company initi...</Typo.BlP>
-      </article>
-      <article>
-        <img className="posts-list__image" src={image} alt={title} />
-        <Typo.BlH2 className="posts-list__title">{title}</Typo.BlH2>
-        <Typo.BlP>How Mielle Organics went viral on social media, and what that virality means for the company initi...</Typo.BlP>
-      </article>
+      {data.map(({ postId, image, title, text }) => (
+        <article>
+          <a href={`${ROUTES.blog}/${postId}`} onClick={onAnchorClick}>
+            <img className="posts-list__image" src={image} alt={title} />
+            <Typo.BlH2 className="posts-list__title">{title}</Typo.BlH2>
+            <Typo.BlP>{text}</Typo.BlP>
+          </a>
+        </article>
+      ))}
     </section>
   );
 };
