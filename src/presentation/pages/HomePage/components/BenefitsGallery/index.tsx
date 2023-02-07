@@ -1,15 +1,18 @@
 import { motion, useAnimationControls, useInView } from 'framer-motion';
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
+import ReactDOM from 'react-dom';
 import { Typo } from '../../../../ui-kit';
 import data from './data';
 import './styles.sass';
 
 const BenefitsGallery: FC = () => {
   const ref = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [activeImage, setActiveImage] = useState<number>(data[0].id);
   const [classNameContainer, setClassNameContainer] = useState('benefits-gallery__active-image-container');
   const [timeoutId, setTimeoutId] = useState<number|undefined>(undefined);
   const controls = useAnimationControls();
+  const carouselControls = useAnimationControls();
   const isInView = useInView(ref);
 
   useEffect(() => {
@@ -66,12 +69,16 @@ const BenefitsGallery: FC = () => {
       transform: `translateX(calc(-${100 * mult}% - ${80 * mult}px)) perspective(var(--perspective)) rotateY(var(--rotateY))`,
     } as any);
 
+    const gap = window.parseInt(window.getComputedStyle(ReactDOM.findDOMNode(containerRef.current) as Element).getPropertyValue('gap'));
+
+    carouselControls.start({
+      transform: `translateX(calc(-${100 * mult}% - ${gap * mult}px))`,
+    });
+
     setActiveImage(id);
   };
 
   const onCompleteDoor = () => {
-    
-
     setClassNameContainer('benefits-gallery__active-image-container benefits-gallery__active-image-container_completed');
 
     const currentTimeoutlId = window.setTimeout(() => {
@@ -122,7 +129,7 @@ const BenefitsGallery: FC = () => {
         </ol>
       </motion.div>
       <div className="benefits-gallery__images">
-        <div className="benefits-gallery__images-inner">
+        <div className="benefits-gallery__images-inner" ref={containerRef}>
           <motion.div
             className={classNameContainer}
             transition={{ duration: 0.7 }}
@@ -159,11 +166,19 @@ const BenefitsGallery: FC = () => {
               );
             })}
           </motion.div>
-          {orderedData.map(({ id, name, image }) => {
-            return (
-              <img key={id} src={image} alt={name} className="benefits-gallery__image" />
-            );
-          })}
+          <div className="benefits-gallery__image-small">
+            {orderedData.map(({ id, name, image }) => {
+              return (
+                <motion.img
+                  key={id}
+                  src={image}
+                  alt={name}
+                  className="benefits-gallery__image"
+                  animate={carouselControls}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
