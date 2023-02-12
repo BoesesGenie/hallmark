@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../../../../application/router/routes';
 import Navigation from './components/Navigation';
 import { ReactComponent as Logo } from './assets/Logo.svg';
-import { ReactComponent as LogoDark } from './assets/LogoDark.svg';
 import { ReactComponent as LogoColored } from './assets/LogoColored.svg';
 import { HeaderProps } from './types';
 import './styles.sass';
@@ -41,7 +40,7 @@ const Header: FC<HeaderProps> = ({ withShowcase = false }) => {
             <LogoColored className="header__logo" onClick={() => navigate(ROUTES.home)} />
           ))
         ) : (
-          <LogoDark className="header__logo" onClick={() => navigate(ROUTES.home)} />
+          <LogoColored className="header__logo" onClick={() => navigate(ROUTES.home)} />
         )}
         <Navigation iconDark={iconDark} />
       </div>

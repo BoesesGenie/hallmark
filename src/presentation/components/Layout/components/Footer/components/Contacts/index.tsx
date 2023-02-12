@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../../../../../../application/router/routes';
 import { Typo } from '../../../../../../ui-kit';
-import stamp from '../../assets/stamp.svg';
+import stamp from '../../assets/stamp-colored.svg';
 import './styles.sass';
 
 const Contacts: FC = () => {

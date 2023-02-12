@@ -29,9 +29,9 @@ const ContentSection: FC<ContentSectionProps> = ({ title, data, className }) => 
         <Typo.H1>{title}</Typo.H1>
       </ContentAppear>
       <div className="content-section__article-container">
-        {data.map(({ title, image, text }) => (
+        {data.map(({ title, image, text }, index) => (
           <article className="content-section__article" key={image}>
-            <DoorImg src={image} alt="Our Products" />
+            <DoorImg src={image} alt="Our Products" delay={index} />
             <ContentAppear>
               <Typo.H2 className="content-section__article-title">{title}</Typo.H2>
               <Typo.P className="content-section__text">{text}</Typo.P>

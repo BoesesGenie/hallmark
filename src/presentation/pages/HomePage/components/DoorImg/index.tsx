@@ -5,14 +5,18 @@ import './styles.sass';
 interface DoorImgProps {
   src: string;
   alt: string;
+  delay?: number;
 }
 
-const DoorImg: FC<DoorImgProps> = ({ src, alt }) => (
+const DoorImg: FC<DoorImgProps> = ({ src, alt, delay = 0 }) => (
   <motion.img
     src={src}
     alt={alt}
     className="door-img"
-    transition={{ duration: 0.7 }}
+    transition={{
+      delay: delay * 0.2,
+      duration: 0.7,
+    }}
     initial={{
       transform: 'perspective(150px) rotateY(70deg)',
       transformOrigin: 'left',

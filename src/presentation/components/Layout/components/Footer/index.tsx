@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Typo } from '../../../../ui-kit';
 import ContentAppear from '../../../ContentAppear';
-import stamp from './assets/stamp.svg';
+import stamp from './assets/stamp-colored.svg';
 import stampColored from './assets/stamp-colored.svg';
 import Contacts from './components/Contacts';
 import ContactUsForm from './components/ContactUsForm';

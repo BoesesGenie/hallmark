@@ -21,14 +21,14 @@ const ProjectsCallery: FC = () => {
         return;
       }
 
-      let move = -activeImage * 100;
+      let mult = -activeImage;
 
       if (direction === 'left') {
-        move = -(activeImage - 2) * 100;
+        mult = -(activeImage - 2);
       }
 
       controls.start({
-        transform: `translateX(${move}%)`,
+        transform: `translateX(calc(${mult * 100}% + ${mult * 8}px))`,
       } as any);
       
       const nextActive = direction === 'right' ? activeImage + 1 : activeImage - 1;
@@ -63,9 +63,7 @@ const ProjectsCallery: FC = () => {
               className={className}
               animate={controls}
               transition={{
-                type: 'spring',
-                stiffness: 100,
-                damping: 10,
+                type: 'linear',
                 duration: 0.7,
               }}
             >

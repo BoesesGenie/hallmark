@@ -1,34 +1,36 @@
-import { motion, useAnimationControls, useInView } from 'framer-motion';
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
-import ReactDOM from 'react-dom';
+import { motion, useInView } from 'framer-motion';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { Typo } from '../../../../ui-kit';
 import data from './data';
 import './styles.sass';
 
 const BenefitsGallery: FC = () => {
   const ref = useRef(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   const [activeImage, setActiveImage] = useState<number>(data[0].id);
   const [classNameContainer, setClassNameContainer] = useState('benefits-gallery__active-image-container');
+  const [imageMainClass, setImageMainClass] = useState('benefits-gallery__image-main');
+  const [imageClass, setImageClass] = useState('benefits-gallery__image');
   const [timeoutId, setTimeoutId] = useState<number|undefined>(undefined);
-  const controls = useAnimationControls();
-  const carouselControls = useAnimationControls();
   const isInView = useInView(ref);
 
   useEffect(() => {
-    if (!isInView && timeoutId) {
-      window.clearTimeout(timeoutId);
-      setTimeoutId(undefined);
-
+    if (isInView) {
       return;
     }
 
-    if (!isInView && !timeoutId) {
-      doChangeImage(data[0].id);
-    }
+    window.clearTimeout(timeoutId);
+    setActiveImage(data[0].id);
+    setImageMainClass('benefits-gallery__image-main');
+    setImageClass('benefits-gallery__image');
+    setOrderedMain(orderMain(data[0].id));
+    setImageMainClass('benefits-gallery__image-main');
+    setOrderedData(orderData(data[0].id));
+    setTimeoutId(undefined);
+  }, [isInView, timeoutId]);
 
+  useEffect(() => {
     const currentTimeoutlId = window.setTimeout(() => {
-      const nextImage = activeImage < data.length ? activeImage + 1 : 1;
+      const nextImage = activeImage % data.length + 1;
 
       doChangeImage(nextImage);
     }, 3000);
@@ -38,48 +40,50 @@ const BenefitsGallery: FC = () => {
     return () => window.clearTimeout(timeoutId);
   }, [isInView, activeImage]);
 
-  const orderedData = useMemo(() => {
+  const orderData = (activeImage: number): typeof data => {
     const result = [];
 
     for (let i = activeImage, j = 0; j < data.length; j++) {
-      let index = (i <= data.length ? i : i - data.length) - 1;
-
-      result.push(data[index]);
+      result.push(data[i % data.length]);
 
       i++;
     }
 
     return result;
-  }, [activeImage]);
-
-  const changeImage = (id: number) => () => {
-    if (id === activeImage) {
-      return;
-    }
-
-    window.clearTimeout(timeoutId);
-
-    doChangeImage(id);
   };
 
+  const [orderedData, setOrderedData] = useState<typeof data>(orderData(data[0].id));
+
+  const orderMain = (activeImage: number) => {
+    const result = [];
+
+    for (let i = activeImage, j = 0; j < data.length; j++) {
+      result.push(data[(i - 1) % data.length]);
+
+      i++;
+    }
+
+    return result;
+  };
+
+  const [orderedMain, setOrderedMain] = useState<typeof data>(orderMain(data[0].id));
+
   const doChangeImage = (id: number) => {
-    const mult = id - 1;
-
-    controls.start({
-      transform: `translateX(calc(-${100 * mult}% - ${80 * mult}px)) perspective(var(--perspective)) rotateY(var(--rotateY))`,
-    } as any);
-
-    const gap = window.parseInt(window.getComputedStyle(ReactDOM.findDOMNode(containerRef.current) as Element).getPropertyValue('gap'));
-
-    carouselControls.start({
-      transform: `translateX(calc(-${100 * mult}% - ${gap * mult}px))`,
-    });
-
     setActiveImage(id);
+    setImageMainClass('benefits-gallery__image-main benefits-gallery__image-main_move');
+    setImageClass('benefits-gallery__image benefits-gallery__image_move');
+    window.setTimeout(() => {
+      setOrderedMain(orderMain(id));
+      setImageMainClass('benefits-gallery__image-main');
+      setOrderedData(orderData(id));
+      setImageClass('benefits-gallery__image');
+    }, 750);
   };
 
   const onCompleteDoor = () => {
     setClassNameContainer('benefits-gallery__active-image-container benefits-gallery__active-image-container_completed');
+    window.clearTimeout(timeoutId);
+    setTimeoutId(undefined);
 
     const currentTimeoutlId = window.setTimeout(() => {
       const nextImage = activeImage < data.length ? activeImage + 1 : 1;
@@ -92,6 +96,7 @@ const BenefitsGallery: FC = () => {
   
   const onStartDoor = () => {
     window.clearTimeout(timeoutId);
+    setTimeoutId(undefined);
     setClassNameContainer('benefits-gallery__active-image-container');
   };
 
@@ -122,14 +127,13 @@ const BenefitsGallery: FC = () => {
               <li
                 key={id}
                 className={className}
-                onClick={changeImage(id)}
               >{name}</li>
             );
           })}
         </ol>
       </motion.div>
       <div className="benefits-gallery__images">
-        <div className="benefits-gallery__images-inner" ref={containerRef}>
+        <div className="benefits-gallery__images-inner">
           <motion.div
             className={classNameContainer}
             transition={{ duration: 0.7 }}
@@ -144,24 +148,13 @@ const BenefitsGallery: FC = () => {
             onAnimationStart={onStartDoor}
             onAnimationComplete={onCompleteDoor}
           >
-            {data.map(({ id, name, image }) => {
+            {orderedMain.map(({ id, name, image }) => {
               return (
-                <motion.img
+                <img
                   key={id}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 100,
-                    damping: 10,
-                    duration: 0.7,
-                  }}
                   src={image}
                   alt={name}
-                  className="benefits-gallery__image-main"
-                  style={{
-                    transform: 'perspective(var(--perspective)) rotateY(var(--rotateY))',
-                    transformOrigin: 'left',
-                  }}
-                  animate={controls}
+                  className={imageMainClass}
                 />
               );
             })}
@@ -169,12 +162,11 @@ const BenefitsGallery: FC = () => {
           <div className="benefits-gallery__image-small">
             {orderedData.map(({ id, name, image }) => {
               return (
-                <motion.img
+                <img
                   key={id}
                   src={image}
                   alt={name}
-                  className="benefits-gallery__image"
-                  animate={carouselControls}
+                  className={imageClass}
                 />
               );
             })}

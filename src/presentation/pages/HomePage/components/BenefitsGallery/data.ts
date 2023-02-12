@@ -24,6 +24,6 @@ const data = [
     name: 'Installation, maintenance and project services available',
     image: image4,
   },
-] as const;
+];
 
 export default data;
