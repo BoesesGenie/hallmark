@@ -3,6 +3,7 @@ import { useInView } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../../../../application/router/routes';
 import Navigation from './components/Navigation';
+import Showcase from './components/Showcase';
 import { ReactComponent as Logo } from './assets/Logo.svg';
 import { ReactComponent as LogoColored } from './assets/LogoColored.svg';
 import { HeaderProps } from './types';
@@ -32,6 +33,9 @@ const Header: FC<HeaderProps> = ({ withShowcase = false }) => {
 
   return (
     <header className={mixedClassName} ref={ref}>
+      {withShowcase && (
+        <Showcase />
+      )}
       <div className={headerTopClass}>
         {withShowcase ? (
           (isInView ? (
@@ -44,9 +48,6 @@ const Header: FC<HeaderProps> = ({ withShowcase = false }) => {
         )}
         <Navigation iconDark={iconDark} />
       </div>
-      {withShowcase && (
-        <h1 className="header__title">Doors and Hardware for residential construction industries</h1>
-      )}
     </header>
   );
 };

@@ -1,0 +1,36 @@
+@use '../../../../../../sass-vars/breakpoints'
+  
+.showcase
+  height: 100%
+  background: url('./assets/Hero.png') no-repeat 60% top
+  background-size: cover
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+
+  &__title
+    padding: 16px 16px 72px
+    font-family: 'Syncopate', Arial, sans-serif
+    font-weight: 700
+    font-size: 26px
+    line-height: 26px
+    text-align: center
+    text-transform: uppercase
+    color: #FFFFFF
+    margin: 0
+
+@media (min-width: breakpoints.$breakpoint-tablet)
+  .showcase
+    &__title
+      padding: 0 40px 32px
+      font-size: 56px
+      line-height: 52px
+
+@media (min-width: breakpoints.$breakpoint-desktop)
+  .showcase
+    background-position: 0 0
+
+    &__title
+      padding: 0 48px 32px
+      font-size: 80px
+      line-height: 72px
