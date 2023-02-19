@@ -2,11 +2,35 @@
   
 .showcase
   height: 100%
-  background: url('./assets/Hero.png') no-repeat 60% top
-  background-size: cover
   display: flex
   flex-direction: column
   justify-content: flex-end
+  position: relative
+
+  &__animation
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 100%
+    overflow: hidden
+
+  &__animation-col
+    background: url('./assets/Hero.png') 60% top
+    background-size: cover
+    width: 50%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+
+  &__animation-col-bg
+    background: linear-gradient(20deg, #fff 90%, transparent 10%)
+    height: 100%
+    width: 50%
+    position: absolute
+    top: 0
+    left: 0
 
   &__title
     padding: 16px 16px 72px
