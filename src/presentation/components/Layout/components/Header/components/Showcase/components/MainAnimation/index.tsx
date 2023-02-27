@@ -1,19 +1,19 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface MainAnimationProps {
   mobColWidth: number;
+  setDisplay: (display: boolean) => void;
 }
 
-const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth }) => {
+const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay }) => {
   const [display1, setDisplay1] = useState<string>('none');
   const [display2, setDisplay2] = useState<string>('block');
   const [display3, setDisplay3] = useState<string>('none');
   const [display4, setDisplay4] = useState<string>('none');
 
   const onCompleteFirst = () => {
-    setDisplay1('none');
-    setDisplay2('block');
+    window.setTimeout(() => setDisplay(false), 2000);
   };
 
   const onCompleteSecond = () => {

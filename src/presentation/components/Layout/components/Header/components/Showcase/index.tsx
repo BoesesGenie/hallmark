@@ -7,7 +7,15 @@ const Showcase: FC = () => {
   const refMobCol1 = useRef<HTMLDivElement>(null);
   const [mobColWidth, setMobColWidth] = useState<number>(0);
   const [display1, setDisplay1] = useState<string>('block');
-  const [displayMain, setDisplayMain] = useState<boolean>(false);
+  const [displayMain, setDisplayMain] = useState<boolean | undefined>(undefined);
+
+  useEffect(() => {
+    if (displayMain === undefined || displayMain === true) {
+      return;
+    }
+
+    setDisplayMain(true);
+  }, [displayMain]);
 
   useEffect(() => {
     if (!refMobCol1.current?.clientWidth) {
@@ -63,7 +71,7 @@ const Showcase: FC = () => {
           animate={{ transform: 'translateY(100vh)' }}
           transition={{ duration: 1 }}
         />
-        {displayMain && <MainAnimation mobColWidth={mobColWidth} />}
+        {displayMain && <MainAnimation mobColWidth={mobColWidth} setDisplay={setDisplayMain} />}
       </div>
       <h1 className="showcase__title">Doors for<br /> residential<br /> industries</h1>
     </div>
