@@ -172,6 +172,7 @@ const Showcase: FC = () => {
           animate={{ transform: 'translateY(-100vh)' }}
           transition={{ duration: 1 }}
         />
+        {displayMain && <MainAnimation deskColWidth={deskColWidth} setDisplay={setDisplayMain} />}
       </div>
       <h1 className="showcase__title">Doors for<br /> residential<br /> industries</h1>
     </div>
