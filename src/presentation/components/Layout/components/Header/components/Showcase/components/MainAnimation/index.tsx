@@ -550,6 +550,103 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               style={{ backgroundPositionX: `-${deskColWidth * 3}px` }}
             />
           </motion.div>
+          <motion.div
+            className="showcase__animation-col-wrap"
+            style={{
+              display: display1,
+            }}
+            initial={{ transform: 'translateY(-100%)' }}
+            animate={{ transform: 'translateY(-7%)' }}
+            transition={{ delay: 9, duration: 1 }}
+          >
+            <motion.div
+              className="showcase__animation-col"
+              style={{
+                width: '100%',
+              }}
+              initial={{ transform: 'translateY(100%)' }}
+              animate={{ transform: 'translateY(8.4%)' }}
+              transition={{ delay: 9, duration: 1 }}
+            >
+              <div className="showcase__animation-col-picture" />
+            </motion.div>
+          </motion.div>
+          <motion.div
+            className="showcase__animation-col-wrap"
+            style={{
+              left: '25%',
+              display: display1,
+            }}
+            initial={{ transform: 'translateY(100%)' }}
+            animate={{ transform: 'translateY(-7%)' }}
+            transition={{ delay: 9, duration: 1 }}
+          >
+            <motion.div
+              className="showcase__animation-col"
+              style={{
+                width: '100%',
+              }}
+              initial={{ transform: 'translateY(-100%)' }}
+              animate={{ transform: 'translateY(8.4%)' }}
+              transition={{ delay: 9, duration: 1 }}
+            >
+              <div
+                className="showcase__animation-col-picture"
+                style={{ backgroundPositionX: `-${deskColWidth}px` }}
+              />
+            </motion.div>
+          </motion.div>
+          <motion.div
+            className="showcase__animation-col-wrap"
+            style={{
+              left: '50%',
+              display: display1,
+            }}
+            initial={{ transform: 'translateY(-100%)' }}
+            animate={{ transform: 'translateY(-7%)' }}
+            transition={{ delay: 9, duration: 1 }}
+          >
+            <motion.div
+              className="showcase__animation-col"
+              style={{
+                width: '100%',
+              }}
+              initial={{ transform: 'translateY(100%)' }}
+              animate={{ transform: 'translateY(8.4%)' }}
+              transition={{ delay: 9, duration: 1 }}
+            >
+              <div
+                className="showcase__animation-col-picture"
+                style={{ backgroundPositionX: `-${deskColWidth * 2}px` }}
+              />
+            </motion.div>
+          </motion.div>
+          <motion.div
+            className="showcase__animation-col-wrap"
+            style={{
+              left: '75%',
+              display: display1,
+            }}
+            initial={{ transform: 'translateY(100%)' }}
+            animate={{ transform: 'translateY(-7%)' }}
+            transition={{ delay: 9, duration: 1 }}
+          >
+            <motion.div
+              className="showcase__animation-col"
+              style={{
+                width: '100%',
+              }}
+              initial={{ transform: 'translateY(-100%)' }}
+              animate={{ transform: 'translateY(8.4%)' }}
+              transition={{ delay: 9, duration: 1 }}
+              onAnimationComplete={onCompleteFirst}
+            >
+              <div
+                className="showcase__animation-col-picture"
+                style={{ backgroundPositionX: `-${deskColWidth * 3}px` }}
+              />
+            </motion.div>
+          </motion.div>
         </>
       ) : (
         <>
