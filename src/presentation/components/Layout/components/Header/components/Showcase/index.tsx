@@ -5,7 +5,9 @@ import MainAnimation from './components/MainAnimation';
 
 const Showcase: FC = () => {
   const refMobCol1 = useRef<HTMLDivElement>(null);
+  const refDeskCol1 = useRef<HTMLDivElement>(null);
   const [mobColWidth, setMobColWidth] = useState<number>(0);
+  const [deskColWidth, setDeskColWidth] = useState<number>(0);
   const [display1, setDisplay1] = useState<string>('block');
   const [displayMain, setDisplayMain] = useState<boolean | undefined>(undefined);
 
@@ -25,6 +27,14 @@ const Showcase: FC = () => {
     setMobColWidth(refMobCol1.current?.clientWidth);
   }, [refMobCol1.current?.clientWidth]);
 
+  useEffect(() => {
+    if (!refDeskCol1.current?.clientWidth) {
+      return;
+    }
+
+    setDeskColWidth(refDeskCol1.current?.clientWidth);
+  }, [refDeskCol1.current?.clientWidth]);
+
   const onCompleteFirst = () => {
     window.setTimeout(() => {
       setDisplay1('none');
@@ -34,7 +44,7 @@ const Showcase: FC = () => {
 
   return (
     <div className="showcase">
-      <div className="showcase__animation">
+      <div className="showcase__animation showcase__animation_mobile">
         <motion.div
           className="showcase__animation-col"
           style={{
@@ -72,6 +82,96 @@ const Showcase: FC = () => {
           transition={{ duration: 1 }}
         />
         {displayMain && <MainAnimation mobColWidth={mobColWidth} setDisplay={setDisplayMain} />}
+      </div>
+      <div className="showcase__animation showcase__animation_tablet">
+        <motion.div
+          className="showcase__animation-col"
+          ref={refDeskCol1}
+          style={{ display: display1 }}
+          initial={{ transform: 'translateY(-50px)' }}
+          animate={{ transform: 'translateY(0px)' }}
+          transition={{ delay: 0.3, duration: 1 }}
+        >
+          <div className="showcase__animation-col-picture" />
+        </motion.div>
+        <motion.div
+          className="showcase__animation-col"
+          style={{
+            left: '25%',
+            display: display1,
+          }}
+          initial={{ transform: 'translateY(50px)' }}
+          animate={{ transform: 'translateY(0px)' }}
+          transition={{ delay: 0.3, duration: 1 }}
+        >
+          <div
+            className="showcase__animation-col-picture"
+            style={{ backgroundPositionX: `-${deskColWidth}px` }}
+          />
+        </motion.div>
+        <motion.div
+          className="showcase__animation-col"
+          style={{
+            left: '50%',
+            display: display1,
+          }}
+          initial={{ transform: 'translateY(-50px)' }}
+          animate={{ transform: 'translateY(0px)' }}
+          transition={{ delay: 0.3, duration: 1 }}
+        >
+          <div
+            className="showcase__animation-col-picture"
+            style={{ backgroundPositionX: `-${deskColWidth * 2}px` }}
+          />
+        </motion.div>
+        <motion.div
+          className="showcase__animation-col"
+          style={{
+            left: '75%',
+            display: display1,
+          }}
+          initial={{ transform: 'translateY(50px)' }}
+          animate={{ transform: 'translateY(0px)' }}
+          transition={{ delay: 0.3, duration: 1 }}
+        >
+          <div
+            className="showcase__animation-col-picture"
+            style={{ backgroundPositionX: `-${deskColWidth * 3}px` }}
+          />
+        </motion.div>
+        <motion.div
+          className="showcase__animation-col-next"
+          initial={{ transform: 'translateY(0px)' }}
+          animate={{ transform: 'translateY(100vh)' }}
+          transition={{ duration: 1 }}
+        />
+        <motion.div
+          className="showcase__animation-col-next"
+          style={{
+            left: '25%',
+            background: 'linear-gradient(20deg, transparent 20%, #fff 20% 80%)',
+          }}
+          initial={{ transform: 'translateY(0px)' }}
+          animate={{ transform: 'translateY(-100vh)' }}
+          transition={{ duration: 1 }}
+        />
+        <motion.div
+          className="showcase__animation-col-next"
+          style={{ left: '50%' }}
+          initial={{ transform: 'translateY(0px)' }}
+          animate={{ transform: 'translateY(100vh)' }}
+          transition={{ duration: 1 }}
+        />
+        <motion.div
+          className="showcase__animation-col-next"
+          style={{
+            left: '75%',
+            background: 'linear-gradient(20deg, transparent 20%, #fff 20% 80%)',
+          }}
+          initial={{ transform: 'translateY(0px)' }}
+          animate={{ transform: 'translateY(-100vh)' }}
+          transition={{ duration: 1 }}
+        />
       </div>
       <h1 className="showcase__title">Doors for<br /> residential<br /> industries</h1>
     </div>
