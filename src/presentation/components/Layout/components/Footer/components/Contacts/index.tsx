@@ -46,7 +46,7 @@ const Contacts: FC = () => {
           <img src={stamp} alt="Hallmark" className="contacts__stamp" />
         </div>
         <div className="contacts__copy">
-          © 2022 Hallmark Hardware Corporation
+          © 2023 Hallmark Hardware Corporation
         </div>
       </div>
     </section>

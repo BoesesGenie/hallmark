@@ -99,8 +99,12 @@
     justify-content: space-between
     gap: 12px
 
-    & button:last-child img
+    & button:last-child svg
       transform: rotate(180deg)
+
+    & button:hover path
+      stroke: white
+
       
 @media (min-width: breakpoints.$breakpoint-tablet)
   .projects-gallery

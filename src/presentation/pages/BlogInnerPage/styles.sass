@@ -32,8 +32,7 @@
     & button
       width: 186px
 
-  &__list-link
-    display: block
+  &__list-header
     margin: 64px 0 32px
     font-family: 'Montserrat', Arial, Helvetica, sans-serif
     font-style: normal
@@ -41,7 +40,6 @@
     font-size: 14px
     line-height: 39px
     color: #2A8FFF
-    text-decoration: none
 
   &__list-post-link
     text-decoration: none
@@ -78,7 +76,7 @@
     &__subtitle
       margin: 64px 0 32px
 
-    &__list-link
+    &__list-header
       font-size: 16px
 
     &__posts
@@ -105,16 +103,18 @@
       margin-top: 115px
 
       & article
-        padding: 0 56px
+        padding: 0 0 0 56px
 
     &__list
       margin: 0 56px 0 0
       padding-left: 64px
       border-left: 1px solid #F2F2F2
       height: fit-content
+      position: sticky
+      top: 0
 
-    &__list-link
+    &__list-header
       margin-top: 125px
 
     &__call-action
-      margin-bottom: 120px
+      margin: 0 0 120px 56px

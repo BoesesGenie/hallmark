@@ -3,7 +3,7 @@ import { motion, useAnimationControls } from 'framer-motion';
 import { Button, Typo } from '../../../../ui-kit';
 import ContentAppear from '../../../../components/ContentAppear';
 import data from './data';
-import arrow from './assets/arrow.svg';
+import { ReactComponent as Arrow } from './assets/arrow.svg';
 import './styles.sass';
 
 const ProjectsCallery: FC = () => {
@@ -94,10 +94,10 @@ const ProjectsCallery: FC = () => {
         <div className="projects-gallery__count">01 — 0{data.length}</div>
         <div className="projects-gallery__buttons">
           <Button theme="circle" onClick={onClick('left')}>
-            <img src={arrow} alt="left" />
+            <Arrow />
           </Button>
           <Button theme="circle" onClick={onClick('right')}>
-            <img src={arrow} alt="right" />
+            <Arrow />
           </Button>
         </div>
       </div>

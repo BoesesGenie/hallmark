@@ -10,7 +10,7 @@ const data = [
     text: 'Knock Down and Welded Frames, Glass Inserts and Sidelites, Transoms',
   },
   {
-    title: 'Hollow Metal Doors and Frames',
+    title: 'Full Range of Hardware Products',
     image: photo2,
     text: 'Wood Doors and Custom Orders Standard and Custom Veneers, Architectural Flush, Stile and Rail, Molded Panel',
   },
