@@ -2,6 +2,7 @@ import React, { FC, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import './styles.sass';
 import MainAnimation from './components/MainAnimation';
+import TitleAnimation from './components/TitleAnimation';
 
 const Showcase: FC = () => {
   const refMobCol1 = useRef<HTMLDivElement>(null);
@@ -174,7 +175,39 @@ const Showcase: FC = () => {
         />
         {displayMain && <MainAnimation deskColWidth={deskColWidth} setDisplay={setDisplayMain} />}
       </div>
-      <h1 className="showcase__title">Doors for<br /> residential<br /> industries</h1>
+      {displayMain ? (
+        <TitleAnimation />
+      ) : (
+        <div className="showcase__title">
+          <div className="showcase__title-animation">
+            <motion.div
+              initial={{ transform: 'translateY(100%)' }}
+              animate={{ transform: 'translateY(0%)' }}
+              transition={{ duration: 1 }}
+            >
+              Doors for
+            </motion.div>
+          </div>
+          <div className="showcase__title-animation">
+            <motion.div
+              initial={{ transform: 'translateY(100%)' }}
+              animate={{ transform: 'translateY(0%)' }}
+              transition={{ duration: 1 }}
+            >
+              residential
+            </motion.div>
+          </div>
+          <div className="showcase__title-animation">
+            <motion.div
+              initial={{ transform: 'translateY(100%)' }}
+              animate={{ transform: 'translateY(0%)' }}
+              transition={{ duration: 1 }}
+            >
+              industries
+            </motion.div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
