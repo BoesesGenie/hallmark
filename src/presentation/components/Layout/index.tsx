@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import Loader from './components/Loader';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { LayoutProps } from './types';
@@ -18,6 +19,7 @@ const Layout: FC<LayoutProps> = ({ withShowcase = false, children }) => {
 
   return (
     <div className="layout">
+      <Loader />
       <Header withShowcase={withShowcase} />
       {children}
       <Footer />
