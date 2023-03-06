@@ -185,7 +185,16 @@ const Showcase: FC = () => {
               animate={{ transform: 'translateY(0%)' }}
               transition={{ duration: 1 }}
             >
-              Doors for
+              Doors and
+            </motion.div>
+          </div>
+          <div className="showcase__title-animation">
+            <motion.div
+              initial={{ transform: 'translateY(100%)' }}
+              animate={{ transform: 'translateY(0%)' }}
+              transition={{ duration: 1 }}
+            >
+              hardware for
             </motion.div>
           </div>
           <div className="showcase__title-animation">
@@ -195,6 +204,15 @@ const Showcase: FC = () => {
               transition={{ duration: 1 }}
             >
               residential
+            </motion.div>
+          </div>
+          <div className="showcase__title-animation">
+            <motion.div
+              initial={{ transform: 'translateY(100%)' }}
+              animate={{ transform: 'translateY(0%)' }}
+              transition={{ duration: 1 }}
+            >
+              construction
             </motion.div>
           </div>
           <div className="showcase__title-animation">

@@ -13,7 +13,8 @@ const TitleAnimation: FC = () => {
 
   return (
     <div className="showcase__title">
-      <div>Doors for</div>
+      <div>Doors and</div>
+      <div>hardware for</div>
       <div className="showcase__title-animation">
         <motion.div
           animate={controls}
@@ -52,6 +53,7 @@ const TitleAnimation: FC = () => {
           residential
         </motion.div>
       </div>
+      <div>construction</div>
       <div>industries</div>
     </div>
   );

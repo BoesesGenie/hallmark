@@ -3,11 +3,25 @@ import { motion, useAnimationControls } from 'framer-motion';
 import logo from './assets/logo.svg';
 import './styles.sass';
 
-const Loader: FC = () => {
+interface LoaderProps {
+  setShowContent: (show: boolean) => void;
+}
+
+let allIsLoaded = false;
+
+const Loader: FC<LoaderProps> = ({ setShowContent }) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [isAnimationCompleted, setIsAnimationCompleted] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(true);
   const controls = useAnimationControls();
+
+  useEffect(() => {
+    if (!allIsLoaded) {
+      return;
+    }
+
+    setShowContent(true);
+  }, []);
 
   useEffect(() => {
     const onPageLoad = () => {
@@ -30,12 +44,19 @@ const Loader: FC = () => {
 
     controls.start({ opacity: 0 });
 
-    window.setTimeout(() => setShow(false), 500);
+    window.setTimeout(() => {
+      setShowContent(true);
+    }, 0);
+
+    window.setTimeout(() => {
+      setShow(false);
+      allIsLoaded = true;
+    }, 500);
   }, [isLoaded, isAnimationCompleted]);
 
   const onAnimationComplete = () => setIsAnimationCompleted(true);
 
-  if (!show) {
+  if (!show || allIsLoaded) {
     return null;
   }
 

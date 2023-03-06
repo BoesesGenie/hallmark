@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Loader from './components/Loader';
 import Header from './components/Header';
@@ -8,6 +8,7 @@ import './styles.sass';
 
 const Layout: FC<LayoutProps> = ({ withShowcase = false, children }) => {
   const { pathname } = useLocation();
+  const [showHeader, setShowHeader] = useState(false);
 
   useEffect(() => {
     // "document.documentElement.scrollTo" is the magic for React Router Dom v6
@@ -19,8 +20,8 @@ const Layout: FC<LayoutProps> = ({ withShowcase = false, children }) => {
 
   return (
     <div className="layout">
-      <Loader />
-      <Header withShowcase={withShowcase} />
+      <Loader setShowContent={setShowHeader} />
+      {showHeader && <Header withShowcase={withShowcase} />}
       {children}
       <Footer />
     </div>
