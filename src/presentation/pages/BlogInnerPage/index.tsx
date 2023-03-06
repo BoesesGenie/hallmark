@@ -30,12 +30,12 @@ const BlogInnerPage: FC = () => {
               <Typo.BlInH2 className="blog-inner-page__subtitle">AND HOW IS IT DONE? (H2)</Typo.BlInH2>
               <Typo.BlInH3>Great example of that (H3)</Typo.BlInH3>
               <Typo.BlInP>
-                The hardware on a door, such as hinges, locks, and handles, is just as important as the door itself. 
-                <ul>
-                  <li>These components determine how easily the door opens and closes, as well as how secure it is. The hinges must be strong enough to support the weight of the door, and the locks must be able to resist forced entry. </li>
-                  <li>Door handles come in a variety of styles, from classic to modern, and can be made from</li>
-                </ul>
+                The hardware on a door, such as hinges, locks, and handles, is just as important as the door itself.
               </Typo.BlInP>
+              <ul>
+                <li>These components determine how easily the door opens and closes, as well as how secure it is. The hinges must be strong enough to support the weight of the door, and the locks must be able to resist forced entry. </li>
+                <li>Door handles come in a variety of styles, from classic to modern, and can be made from</li>
+              </ul>
             </article>
           </section>
           <section className="blog-inner-page__call-action">

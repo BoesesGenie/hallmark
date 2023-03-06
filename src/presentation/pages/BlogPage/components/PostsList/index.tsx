@@ -21,7 +21,7 @@ const PostsList: FC = () => {
     <section className="posts-list">
       <MainPost />
       {data.map(({ postId, image, title, text }) => (
-        <article>
+        <article key={postId}>
           <a href={`${ROUTES.blog}/${postId}`} onClick={onAnchorClick}>
             <img className="posts-list__image" src={image} alt={title} />
             <Typo.BlH2 className="posts-list__title">{title}</Typo.BlH2>
