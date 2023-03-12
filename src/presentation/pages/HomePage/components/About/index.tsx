@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { motion } from 'framer-motion';
 import { Typo } from '../../../../ui-kit';
-import about1 from './assets/about1.jpg';
-import about2 from './assets/about2.jpg';
+import about1 from './assets/about1.webp';
+import about2 from './assets/about2.webp';
 import './styles.sass';
 
 const About: FC = () => {

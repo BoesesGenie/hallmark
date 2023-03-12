@@ -102,8 +102,17 @@
     & button:last-child svg
       transform: rotate(180deg)
 
-    & button:hover path
-      stroke: white
+@media not ((hover: hover) and (pointer: fine))
+  .projects-gallery
+    &__buttons
+      & button:active path
+        stroke: white
+
+@media (hover: hover) and (pointer: fine)
+  .projects-gallery
+    &__buttons
+      & button:hover path
+        stroke: white
 
       
 @media (min-width: breakpoints.$breakpoint-tablet)

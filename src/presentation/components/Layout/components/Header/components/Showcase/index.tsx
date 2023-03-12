@@ -49,7 +49,7 @@ const Showcase: FC = () => {
         <motion.div
           className="showcase__animation-col"
           style={{
-            backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+            backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
             display: display1,
           }}
           ref={refMobCol1}

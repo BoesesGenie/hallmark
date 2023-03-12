@@ -1,7 +1,7 @@
 import React from 'react';
-import photo1 from '../assets/produts1.png';
-import photo2 from '../assets/produts2.png';
-import photo3 from '../assets/produts3.png';
+import photo1 from '../assets/products1.webp';
+import photo2 from '../assets/products2.webp';
+import photo3 from '../assets/products3.webp';
 
 const data = [
   {

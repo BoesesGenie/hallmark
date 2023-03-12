@@ -281,7 +281,7 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             <motion.div
               className="showcase__animation-col"
               style={{
-                backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+                backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
               initial={{ transform: 'translateY(-100%)' }}
@@ -332,7 +332,7 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             <motion.div
               className="showcase__animation-col"
               style={{
-                backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+                backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
               initial={{ transform: 'translateY(-100%)' }}
@@ -486,7 +486,7 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             <motion.div
               className="showcase__animation-col"
               style={{
-                backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+                backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
               initial={{ transform: 'translateY(-100%)' }}
@@ -640,7 +640,7 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             <motion.div
               className="showcase__animation-col"
               style={{
-                backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+                backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
               initial={{ transform: 'translateY(-100%)' }}
@@ -813,7 +813,7 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
           <motion.div
             className="showcase__animation-col"
             style={{
-              backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+              backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
               display: display2,
             }}
             initial={{ transform: 'translateY(0px)' }}
@@ -840,7 +840,7 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             <motion.div
               className="showcase__animation-col showcase__animation-col_step-2"
               style={{
-                backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+                backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
               initial={{ transform: 'translateY(-100%)' }}
@@ -872,7 +872,7 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
           <motion.div
             className="showcase__animation-col showcase__animation-col_step-2"
             style={{
-              backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+              backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
               display: display3,
             }}
             initial={{ transform: 'translateY(0px)' }}
@@ -899,7 +899,7 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             <motion.div
               className="showcase__animation-col showcase__animation-col_step-3"
               style={{
-                backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+                backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
               initial={{ transform: 'translateY(-100%)' }}
@@ -931,7 +931,7 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
           <motion.div
             className="showcase__animation-col showcase__animation-col_step-3"
             style={{
-              backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+              backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
               display: display4,
             }}
             initial={{ transform: 'translateY(0px)' }}
@@ -958,7 +958,7 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             <motion.div
               className="showcase__animation-col showcase__animation-col_step-4"
               style={{
-                backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+                backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
               initial={{ transform: 'translateY(-100%)' }}
@@ -990,7 +990,7 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
           <motion.div
             className="showcase__animation-col showcase__animation-col_step-4"
             style={{
-              backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+              backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
               display: display5,
             }}
             initial={{ transform: 'translateY(0px)' }}
@@ -1017,7 +1017,7 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             <motion.div
               className="showcase__animation-col showcase__animation-col_step-5"
               style={{
-                backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+                backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
               initial={{ transform: 'translateY(-100%)' }}
@@ -1049,7 +1049,7 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
           <motion.div
             className="showcase__animation-col showcase__animation-col_step-5"
             style={{
-              backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+              backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
               display: display1,
             }}
             initial={{ transform: 'translateY(0px)' }}
@@ -1076,7 +1076,7 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             <motion.div
               className="showcase__animation-col"
               style={{
-                backgroundPositionX: `calc(60% + ${mobColWidth}px)`,
+                backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
               initial={{ transform: 'translateY(-100%)' }}

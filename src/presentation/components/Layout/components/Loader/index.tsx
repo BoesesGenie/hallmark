@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { motion, useAnimationControls } from 'framer-motion';
-import logo from './assets/logo.svg';
+import { ReactComponent as Logo }  from './assets/logo.svg';
 import './styles.sass';
 
 interface LoaderProps {
@@ -21,7 +21,19 @@ const Loader: FC<LoaderProps> = ({ setShowContent }) => {
     }
 
     setShowContent(true);
-  }, []);
+  }, [setShowContent]);
+
+  useEffect(() => {
+    if (show) {
+      document.body.classList.add('fixedPos');
+    } else {
+      document.body.classList.remove('fixedPos');
+    }
+
+    return () => {
+      document.body.classList.remove('fixedPos');
+    };
+  }, [show]);
 
   useEffect(() => {
     const onPageLoad = () => {
@@ -52,7 +64,7 @@ const Loader: FC<LoaderProps> = ({ setShowContent }) => {
       setShow(false);
       allIsLoaded = true;
     }, 500);
-  }, [isLoaded, isAnimationCompleted]);
+  }, [isLoaded, isAnimationCompleted, controls, setShowContent]);
 
   const onAnimationComplete = () => setIsAnimationCompleted(true);
 
@@ -66,9 +78,7 @@ const Loader: FC<LoaderProps> = ({ setShowContent }) => {
       animate={controls}
       transition={{ duration: 0.5 }}
     >
-      <motion.img
-        src={logo}
-        alt="Hallmark"
+      <motion.div
         transition={{ duration: 0.7 }}
         initial={{
           opacity: 0,
@@ -76,7 +86,9 @@ const Loader: FC<LoaderProps> = ({ setShowContent }) => {
         whileInView={{
           opacity: 1,
         }}
-      />
+      >
+        <Logo />
+      </motion.div>
       <motion.div
         className="loader__text"
         initial={{
