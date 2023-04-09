@@ -5,6 +5,6 @@ export interface ButtonProps {
   href?: string;
   target?: string;
   theme?: 'circle';
-  onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement> | undefined) => void;
   className?: string;
 }

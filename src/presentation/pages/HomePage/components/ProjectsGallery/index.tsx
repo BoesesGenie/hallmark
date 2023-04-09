@@ -14,7 +14,7 @@ const ProjectsGallery: FC = () => {
   const controls = useAnimationControls();
 
   const onClick = (direction: 'left' | 'right') => {
-    return (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    return () => {
       if ((direction === 'left' && activeImage === data[0].id)
         || (direction === 'right' && activeImage === data[data.length - 1].id)
       ) {
