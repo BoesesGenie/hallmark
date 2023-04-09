@@ -44,12 +44,16 @@
     padding: 120px 56px 32px
     flex-direction: row
     flex-wrap: wrap
-    gap: 64px
+    gap: 64px 32px
     align-items: flex-start
     justify-content: space-between
 
     & > div
       position: relative
+      flex: 0 0 430px
+
+      & > div
+        width: auto
 
     &__wrapper
       background: #FAFAFA
