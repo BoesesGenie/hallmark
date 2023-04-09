@@ -30,7 +30,6 @@ const Offer: FC = () => {
         <h2 className="offer__title">What do we offer?</h2>
         <p className="offer__text">At Hallmark Hardware, we only work with the most reputable suppliers so our customers feel confident knowing that when aligned with us, they are getting the best. Our warehouse carries a stock of doors, frames and hardware to serve needs of our clients quickly and efficiently.</p>
       </div>
-      <div className="offer__carousel-wrapper">
         <motion.div
           className="offer__carousel"
           transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
@@ -58,7 +57,6 @@ const Offer: FC = () => {
             </div>
           ))}
         </motion.div>
-      </div>
     </section>
   );
 };

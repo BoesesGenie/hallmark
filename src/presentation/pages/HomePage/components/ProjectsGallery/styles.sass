@@ -14,8 +14,7 @@
     padding-left: 16px
     max-width: 100vw
     overflow: hidden
-    background: linear-gradient(90deg, #2A8FFF calc(100vw - 32px), #fff 16px)
-    background-position: 16px
+    background: linear-gradient(90deg, #2A8FFF calc(100vw - 32px), #fff 16px) 16px
     position: relative
     gap: 8px
 
@@ -125,8 +124,7 @@
 
     &__images
       padding-left: 36px
-      background: linear-gradient(90deg, #2A8FFF calc(100vw - 72px), #fff 36px)
-      background-position: 36px
+      background: linear-gradient(90deg, #2A8FFF calc(100vw - 72px), #fff 36px) 36px
 
       & h2
         font-size: 32px
@@ -170,7 +168,7 @@
 @media (min-width: breakpoints.$breakpoint-desktop)
   .projects-gallery
     padding-top: 92px
-    max-width: 1440px
+    max-width: 100%
     margin: 0 auto
     gap: 32px
     overflow: hidden
@@ -181,10 +179,8 @@
       line-height: 48px
 
     &__images
-      max-width: 100%
       padding-left: 56px
-      background: linear-gradient(90deg, #2A8FFF calc(100% - 112px), #fff 56px)
-      background-position: 56px
+      background: linear-gradient(90deg, #2A8FFF calc(100% - 112px), #fff 56px) 56px
       overflow: inherit
 
     &__image-container
@@ -199,3 +195,7 @@
       padding: 0 32px
       width: calc(100% - 120px)
       height: 64px
+
+@media (min-width: 1440px)
+  .projects-gallery
+    max-width: 1440px

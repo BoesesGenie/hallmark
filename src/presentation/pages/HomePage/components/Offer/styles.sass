@@ -29,7 +29,7 @@
   &__carousel
     height: 154px
     display: flex
-    max-width: 100vw
+    max-width: 100%
     overflow: hidden
     background: #1e1e1e
     gap: 1px
@@ -69,13 +69,10 @@
 
 @media (min-width: breakpoints.$breakpoint-desktop)
   .offer
-    position: relative
-
     &__content
       display: flex
       flex-direction: column
       align-items: center
-      margin-bottom: 306px
 
     &__title
       font-size: 56px
@@ -87,12 +84,3 @@
       font-size: 16px
       line-height: 24px
       width: 656px
-
-    &__carousel
-      overflow: hidden
-
-    &__carousel-wrapper
-      position: absolute
-      bottom: 89px
-      max-width: 100%
-      overflow: hidden

@@ -4,7 +4,6 @@ import Loader from './components/Loader';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { LayoutProps } from './types';
-import './styles.sass';
 
 const Layout: FC<LayoutProps> = ({ withShowcase = false, children }) => {
   const { pathname } = useLocation();
@@ -19,12 +18,12 @@ const Layout: FC<LayoutProps> = ({ withShowcase = false, children }) => {
   }, [pathname]);
 
   return (
-    <div className="layout">
+    <>
       <Loader setShowContent={setShowHeader} />
       {showHeader && <Header withShowcase={withShowcase} />}
       {children}
       <Footer />
-    </div>
+    </>
   );
 };
 

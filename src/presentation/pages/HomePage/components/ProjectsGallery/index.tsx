@@ -6,7 +6,7 @@ import data from './data';
 import { ReactComponent as Arrow } from './assets/arrow.svg';
 import './styles.sass';
 
-const ProjectsCallery: FC = () => {
+const ProjectsGallery: FC = () => {
   const [activeImage, setActiveImage] = useState<number>(data[0].id);
   const [topTitleClass, setTopTitleClass] = useState<string>('');
   const [prevTitle, setPrevTitle] = useState<string>(data[0].title);
@@ -105,4 +105,4 @@ const ProjectsCallery: FC = () => {
   );
 };
 
-export default ProjectsCallery;
+export default ProjectsGallery;
