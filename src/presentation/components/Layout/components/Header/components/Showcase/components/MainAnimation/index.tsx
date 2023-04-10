@@ -1,5 +1,6 @@
 import React, {FC, useState} from 'react';
 import {motion} from 'framer-motion';
+import Slide from '../Slide';
 
 interface MainAnimationProps {
   setDisplay: (display: boolean) => void;
@@ -42,59 +43,8 @@ const MainAnimation: FC<MainAnimationProps> = ({mobColWidth, setDisplay, deskCol
     <>
       {deskColWidth ? (
         <>
-          {[...(function* () {
-            for (let i = 0; i < 4; i++) {
-              yield (
-                <motion.div
-                  className="showcase__animation-col"
-                  style={{
-                    left: `${i * 25}%`,
-                    display: display2,
-                  }}
-                  initial={{transform: 'translateY(0px)'}}
-                  animate={{transform: `translateY(${50 * (i % 2 === 0 ? 1 : -1)}px)`}}
-                  transition={{duration: 0.7}}
-                >
-                  <div
-                    className="showcase__animation-col-picture"
-                    style={{backgroundPositionX: `-${i * deskColWidth}px`}}
-                  />
-                </motion.div>
-              );
-            }
-          })()]}
-          {[...(function* () {
-            for (let i = 0; i < 4; i++) {
-              yield (
-                <motion.div
-                  className="showcase__animation-col-wrap"
-                  style={{
-                    left: `${i * 25}%`,
-                    display: display2,
-                  }}
-                  initial={{transform: `translateY(${100 * (i % 2 === 0 ? -1 : 1)}%)`}}
-                  animate={{transform: 'translateY(-7%)'}}
-                  transition={{duration: 1}}
-                >
-                  <motion.div
-                    className="showcase__animation-col"
-                    style={{
-                      width: '100%',
-                    }}
-                    initial={{transform: `translateY(${100 * (i % 2 === 0 ? 1 : -1)}%)`}}
-                    animate={{transform: 'translateY(8.4%)'}}
-                    transition={{duration: 1}}
-                    onAnimationComplete={i === 3 ? onCompleteSecond : undefined}
-                  >
-                    <div
-                      className="showcase__animation-col-picture showcase__animation-col-picture_step-2"
-                      style={{backgroundPositionX: `-${i * deskColWidth}px`}}
-                    />
-                  </motion.div>
-                </motion.div>
-              );
-            }
-          })()]}
+          <Slide display={display2} colWidth={deskColWidth} />
+          <Slide display={display2} colWidth={deskColWidth} wrapped={true} onAnimationComplete={onCompleteSecond} />
           {[...(function* () {
             for (let i = 0; i < 4; i++) {
               yield (
