@@ -6,6 +6,8 @@ interface ImageContainerProps {
   colWidth: number;
   wrapped?: boolean;
   onAnimationComplete?: () => void;
+  delay?: number;
+  pictureClassName?: string;
 }
 
 const Slide: FC<ImageContainerProps> = ({
@@ -13,6 +15,8 @@ const Slide: FC<ImageContainerProps> = ({
   colWidth,
   wrapped = false,
   onAnimationComplete = () => null,
+  delay = 0,
+  pictureClassName = '',
 }) => {
   if (wrapped) {
     return (
@@ -28,7 +32,10 @@ const Slide: FC<ImageContainerProps> = ({
                 }}
                 initial={{transform: `translateY(${100 * (i % 2 === 0 ? -1 : 1)}%)`}}
                 animate={{transform: 'translateY(-7%)'}}
-                transition={{duration: 1}}
+                transition={{
+                  delay,
+                  duration: 1,
+                }}
               >
                 <motion.div
                   className="showcase__animation-col"
@@ -37,11 +44,14 @@ const Slide: FC<ImageContainerProps> = ({
                   }}
                   initial={{transform: `translateY(${100 * (i % 2 === 0 ? 1 : -1)}%)`}}
                   animate={{transform: 'translateY(8.4%)'}}
-                  transition={{duration: 1}}
+                  transition={{
+                    delay,
+                    duration: 1,
+                  }}
                   onAnimationComplete={i === 3 ? onAnimationComplete : undefined}
                 >
                   <div
-                    className="showcase__animation-col-picture showcase__animation-col-picture_step-2"
+                    className={`showcase__animation-col-picture ${pictureClassName}`}
                     style={{backgroundPositionX: `-${i * colWidth}px`}}
                   />
                 </motion.div>
@@ -66,10 +76,13 @@ const Slide: FC<ImageContainerProps> = ({
               }}
               initial={{transform: 'translateY(0px)'}}
               animate={{transform: `translateY(${50 * (i % 2 === 0 ? 1 : -1)}px)`}}
-              transition={{duration: 0.7}}
+              transition={{
+                delay,
+                duration: 0.7,
+              }}
             >
               <div
-                className="showcase__animation-col-picture"
+                className={`showcase__animation-col-picture ${pictureClassName}`}
                 style={{backgroundPositionX: `-${i * colWidth}px`}}
               />
             </motion.div>
