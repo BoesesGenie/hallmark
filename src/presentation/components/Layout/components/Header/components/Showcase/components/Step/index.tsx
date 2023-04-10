@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {motion} from 'framer-motion';
+import SlidePart from '../SlidePart';
 
 interface StepProps {
   display: string;
@@ -23,28 +24,14 @@ const Step: FC<StepProps> = ({
       {[...(function* () {
         for (let i = 0; i < 4; i++) {
           yield (
-            <motion.div
+            <SlidePart
               key={`step1_${i}`}
-              className="showcase__animation-col"
-              style={{
-                left: `${i * 25}%`,
-                display,
-              }}
-              initial={{transform: 'translateY(0px)'}}
-              animate={{transform: `translateY(${50 * (i % 2 === 0 ? 1 : -1)}px)`}}
-              transition={{
-                delay,
-                duration: 0.7,
-              }}
-            >
-              <div
-                className="showcase__animation-col-picture"
-                style={{
-                  backgroundPositionX: `-${i * colWidth}px`,
-                  backgroundImage: `url(${picture1})`,
-                }}
-              />
-            </motion.div>
+              index={i}
+              delay={delay}
+              colWidth={colWidth}
+              picture={picture1}
+              display={display}
+            />
           );
         }
       })()]}
@@ -65,27 +52,14 @@ const Step: FC<StepProps> = ({
                 duration: 1,
               }}
             >
-              <motion.div
-                className="showcase__animation-col"
-                style={{
-                  width: '100%',
-                }}
-                initial={{transform: `translateY(${100 * (i % 2 === 0 ? 1 : -1)}%)`}}
-                animate={{transform: 'translateY(8.4%)'}}
-                transition={{
-                  delay,
-                  duration: 1,
-                }}
-                onAnimationComplete={i === 3 ? onAnimationComplete : undefined}
-              >
-                <div
-                  className="showcase__animation-col-picture"
-                  style={{
-                    backgroundPositionX: `-${i * colWidth}px`,
-                    backgroundImage: `url(${picture2})`,
-                  }}
-                />
-              </motion.div>
+              <SlidePart
+                index={i}
+                delay={delay}
+                colWidth={colWidth}
+                picture={picture2}
+                isWrapped={true}
+                onAnimationComplete={onAnimationComplete}
+              />
             </motion.div>
           );
         }
