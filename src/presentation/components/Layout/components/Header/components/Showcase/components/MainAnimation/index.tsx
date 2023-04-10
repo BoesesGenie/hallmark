@@ -151,314 +151,118 @@ const MainAnimation: FC<MainAnimationProps> = ({mobColWidth, setDisplay, deskCol
               );
             }
           })()]}
-          <motion.div
-            className="showcase__animation-col"
-            style={{
-              display: display4,
-            }}
-            initial={{transform: 'translateY(0px)'}}
-            animate={{transform: 'translateY(50px)'}}
-            transition={{delay: 6, duration: 0.7}}
-          >
-            <div className="showcase__animation-col-picture showcase__animation-col-picture_step-3"/>
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col"
-            style={{
-              left: '25%',
-              display: display4,
-            }}
-            initial={{transform: 'translateY(0px)'}}
-            animate={{transform: 'translateY(-50px)'}}
-            transition={{delay: 6, duration: 0.7}}
-          >
-            <div
-              className="showcase__animation-col-picture showcase__animation-col-picture_step-3"
-              style={{backgroundPositionX: `-${deskColWidth}px`}}
-            />
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col"
-            style={{
-              left: '50%',
-              display: display4,
-            }}
-            initial={{transform: 'translateY(0px)'}}
-            animate={{transform: 'translateY(50px)'}}
-            transition={{delay: 6, duration: 0.7}}
-          >
-            <div
-              className="showcase__animation-col-picture showcase__animation-col-picture_step-3"
-              style={{backgroundPositionX: `-${deskColWidth * 2}px`}}
-            />
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col"
-            style={{
-              left: '75%',
-              display: display4,
-            }}
-            initial={{transform: 'translateY(0px)'}}
-            animate={{transform: 'translateY(-50px)'}}
-            transition={{delay: 6, duration: 0.7}}
-          >
-            <div
-              className="showcase__animation-col-picture showcase__animation-col-picture_step-3"
-              style={{backgroundPositionX: `-${deskColWidth * 3}px`}}
-            />
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col-wrap"
-            style={{
-              display: display4,
-            }}
-            initial={{transform: 'translateY(-100%)'}}
-            animate={{transform: 'translateY(-7%)'}}
-            transition={{delay: 6, duration: 1}}
-          >
-            <motion.div
-              className="showcase__animation-col"
-              style={{
-                width: '100%',
-              }}
-              initial={{transform: 'translateY(100%)'}}
-              animate={{transform: 'translateY(8.4%)'}}
-              transition={{delay: 6, duration: 1}}
-            >
-              <div className="showcase__animation-col-picture showcase__animation-col-picture_step-4"/>
-            </motion.div>
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col-wrap"
-            style={{
-              left: '25%',
-              display: display4,
-            }}
-            initial={{transform: 'translateY(100%)'}}
-            animate={{transform: 'translateY(-7%)'}}
-            transition={{delay: 6, duration: 1}}
-          >
-            <motion.div
-              className="showcase__animation-col"
-              style={{
-                width: '100%',
-              }}
-              initial={{transform: 'translateY(-100%)'}}
-              animate={{transform: 'translateY(8.4%)'}}
-              transition={{delay: 6, duration: 1}}
-            >
-              <div
-                className="showcase__animation-col-picture showcase__animation-col-picture_step-4"
-                style={{backgroundPositionX: `-${deskColWidth}px`}}
-              />
-            </motion.div>
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col-wrap"
-            style={{
-              left: '50%',
-              display: display4,
-            }}
-            initial={{transform: 'translateY(-100%)'}}
-            animate={{transform: 'translateY(-7%)'}}
-            transition={{delay: 6, duration: 1}}
-          >
-            <motion.div
-              className="showcase__animation-col"
-              style={{
-                width: '100%',
-              }}
-              initial={{transform: 'translateY(100%)'}}
-              animate={{transform: 'translateY(8.4%)'}}
-              transition={{delay: 6, duration: 1}}
-            >
-              <div
-                className="showcase__animation-col-picture showcase__animation-col-picture_step-4"
-                style={{backgroundPositionX: `-${deskColWidth * 2}px`}}
-              />
-            </motion.div>
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col-wrap"
-            style={{
-              left: '75%',
-              display: display4,
-            }}
-            initial={{transform: 'translateY(100%)'}}
-            animate={{transform: 'translateY(-7%)'}}
-            transition={{delay: 6, duration: 1}}
-          >
-            <motion.div
-              className="showcase__animation-col"
-              style={{
-                backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
-                width: '100%',
-              }}
-              initial={{transform: 'translateY(-100%)'}}
-              animate={{transform: 'translateY(8.4%)'}}
-              transition={{delay: 6, duration: 1}}
-              onAnimationComplete={onCompleteFourth}
-            >
-              <div
-                className="showcase__animation-col-picture showcase__animation-col-picture_step-4"
-                style={{backgroundPositionX: `-${deskColWidth * 3}px`}}
-              />
-            </motion.div>
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col"
-            style={{
-              display: display5,
-            }}
-            initial={{transform: 'translateY(0px)'}}
-            animate={{transform: 'translateY(50px)'}}
-            transition={{delay: 9, duration: 0.7}}
-          >
-            <div className="showcase__animation-col-picture showcase__animation-col-picture_step-4"/>
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col"
-            style={{
-              left: '25%',
-              display: display5,
-            }}
-            initial={{transform: 'translateY(0px)'}}
-            animate={{transform: 'translateY(-50px)'}}
-            transition={{delay: 9, duration: 0.7}}
-          >
-            <div
-              className="showcase__animation-col-picture showcase__animation-col-picture_step-4"
-              style={{backgroundPositionX: `-${deskColWidth}px`}}
-            />
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col"
-            style={{
-              left: '50%',
-              display: display5,
-            }}
-            initial={{transform: 'translateY(0px)'}}
-            animate={{transform: 'translateY(50px)'}}
-            transition={{delay: 9, duration: 0.7}}
-          >
-            <div
-              className="showcase__animation-col-picture showcase__animation-col-picture_step-4"
-              style={{backgroundPositionX: `-${deskColWidth * 2}px`}}
-            />
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col"
-            style={{
-              left: '75%',
-              display: display5,
-            }}
-            initial={{transform: 'translateY(0px)'}}
-            animate={{transform: 'translateY(-50px)'}}
-            transition={{delay: 9, duration: 0.7}}
-          >
-            <div
-              className="showcase__animation-col-picture showcase__animation-col-picture_step-4"
-              style={{backgroundPositionX: `-${deskColWidth * 3}px`}}
-            />
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col-wrap"
-            style={{
-              display: display5,
-            }}
-            initial={{transform: 'translateY(-100%)'}}
-            animate={{transform: 'translateY(-7%)'}}
-            transition={{delay: 9, duration: 1}}
-          >
-            <motion.div
-              className="showcase__animation-col"
-              style={{
-                width: '100%',
-              }}
-              initial={{transform: 'translateY(100%)'}}
-              animate={{transform: 'translateY(8.4%)'}}
-              transition={{delay: 9, duration: 1}}
-            >
-              <div className="showcase__animation-col-picture showcase__animation-col-picture_step-5"/>
-            </motion.div>
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col-wrap"
-            style={{
-              left: '25%',
-              display: display5,
-            }}
-            initial={{transform: 'translateY(100%)'}}
-            animate={{transform: 'translateY(-7%)'}}
-            transition={{delay: 9, duration: 1}}
-          >
-            <motion.div
-              className="showcase__animation-col"
-              style={{
-                width: '100%',
-              }}
-              initial={{transform: 'translateY(-100%)'}}
-              animate={{transform: 'translateY(8.4%)'}}
-              transition={{delay: 9, duration: 1}}
-            >
-              <div
-                className="showcase__animation-col-picture showcase__animation-col-picture_step-5"
-                style={{backgroundPositionX: `-${deskColWidth}px`}}
-              />
-            </motion.div>
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col-wrap"
-            style={{
-              left: '50%',
-              display: display5,
-            }}
-            initial={{transform: 'translateY(-100%)'}}
-            animate={{transform: 'translateY(-7%)'}}
-            transition={{delay: 9, duration: 1}}
-          >
-            <motion.div
-              className="showcase__animation-col"
-              style={{
-                width: '100%',
-              }}
-              initial={{transform: 'translateY(100%)'}}
-              animate={{transform: 'translateY(8.4%)'}}
-              transition={{delay: 9, duration: 1}}
-            >
-              <div
-                className="showcase__animation-col-picture showcase__animation-col-picture_step-5"
-                style={{backgroundPositionX: `-${deskColWidth * 2}px`}}
-              />
-            </motion.div>
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col-wrap"
-            style={{
-              left: '75%',
-              display: display5,
-            }}
-            initial={{transform: 'translateY(100%)'}}
-            animate={{transform: 'translateY(-7%)'}}
-            transition={{delay: 9, duration: 1}}
-          >
-            <motion.div
-              className="showcase__animation-col"
-              style={{
-                backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
-                width: '100%',
-              }}
-              initial={{transform: 'translateY(-100%)'}}
-              animate={{transform: 'translateY(8.4%)'}}
-              transition={{delay: 9, duration: 1}}
-              onAnimationComplete={onCompleteFifth}
-            >
-              <div
-                className="showcase__animation-col-picture showcase__animation-col-picture_step-5"
-                style={{backgroundPositionX: `-${deskColWidth * 3}px`}}
-              />
-            </motion.div>
-          </motion.div>
+          {[...(function* () {
+            for (let i = 0; i < 4; i++) {
+              yield (
+                <motion.div
+                  className="showcase__animation-col"
+                  style={{
+                    left: `${i * 25}%`,
+                    display: display4,
+                  }}
+                  initial={{transform: 'translateY(0px)'}}
+                  animate={{transform: `translateY(${50 * (i % 2 === 0 ? 1 : -1)}px)`}}
+                  transition={{
+                    delay: 6,
+                    duration: 0.7
+                  }}
+                >
+                  <div
+                    className="showcase__animation-col-picture showcase__animation-col-picture_step-3"
+                    style={{backgroundPositionX: `-${i * deskColWidth}px`}}
+                  />
+                </motion.div>
+              );
+            }
+          })()]}
+          {[...(function* () {
+            for (let i = 0; i < 4; i++) {
+              yield (
+                <motion.div
+                  className="showcase__animation-col-wrap"
+                  style={{
+                    left: `${i * 25}%`,
+                    display: display4,
+                  }}
+                  initial={{transform: `translateY(${100 * (i % 2 === 0 ? -1 : 1)}%)`}}
+                  animate={{transform: 'translateY(-7%)'}}
+                  transition={{delay: 6, duration: 1}}
+                >
+                  <motion.div
+                    className="showcase__animation-col"
+                    style={{
+                      width: '100%',
+                    }}
+                    initial={{transform: `translateY(${100 * (i % 2 === 0 ? 1 : -1)}%)`}}
+                    animate={{transform: 'translateY(8.4%)'}}
+                    transition={{delay: 6, duration: 1}}
+                    onAnimationComplete={i === 3 ? onCompleteFourth : undefined}
+                  >
+                    <div
+                      className="showcase__animation-col-picture showcase__animation-col-picture_step-4"
+                      style={{backgroundPositionX: `-${i * deskColWidth}px`}}
+                    />
+                  </motion.div>
+                </motion.div>
+              );
+            }
+          })()]}
+          {[...(function* () {
+            for (let i = 0; i < 4; i++) {
+              yield (
+                <motion.div
+                  className="showcase__animation-col"
+                  style={{
+                    left: `${i * 25}%`,
+                    display: display5,
+                  }}
+                  initial={{transform: 'translateY(0px)'}}
+                  animate={{transform: `translateY(${50 * (i % 2 === 0 ? 1 : -1)}px)`}}
+                  transition={{
+                    delay: 9,
+                    duration: 0.7
+                  }}
+                >
+                  <div
+                    className="showcase__animation-col-picture showcase__animation-col-picture_step-4"
+                    style={{backgroundPositionX: `-${i * deskColWidth}px`}}
+                  />
+                </motion.div>
+              );
+            }
+          })()]}
+          {[...(function* () {
+            for (let i = 0; i < 4; i++) {
+              yield (
+                <motion.div
+                  className="showcase__animation-col-wrap"
+                  style={{
+                    left: `${i * 25}%`,
+                    display: display5,
+                  }}
+                  initial={{transform: `translateY(${100 * (i % 2 === 0 ? -1 : 1)}%)`}}
+                  animate={{transform: 'translateY(-7%)'}}
+                  transition={{delay: 9, duration: 1}}
+                >
+                  <motion.div
+                    className="showcase__animation-col"
+                    style={{
+                      width: '100%',
+                    }}
+                    initial={{transform: `translateY(${100 * (i % 2 === 0 ? 1 : -1)}%)`}}
+                    animate={{transform: 'translateY(8.4%)'}}
+                    transition={{delay: 9, duration: 1}}
+                    onAnimationComplete={i === 3 ? onCompleteFifth : undefined}
+                  >
+                    <div
+                      className="showcase__animation-col-picture showcase__animation-col-picture_step-5"
+                      style={{backgroundPositionX: `-${i * deskColWidth}px`}}
+                    />
+                  </motion.div>
+                </motion.div>
+              );
+            }
+          })()]}
           <motion.div
             className="showcase__animation-col"
             style={{
