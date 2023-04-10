@@ -13,7 +13,7 @@ const Showcase: FC = () => {
   const [displayMain, setDisplayMain] = useState<boolean | undefined>(undefined);
 
   useEffect(() => {
-    if (displayMain === undefined || displayMain === true) {
+    if (displayMain === undefined || displayMain) {
       return;
     }
 
@@ -85,61 +85,28 @@ const Showcase: FC = () => {
         {displayMain && <MainAnimation mobColWidth={mobColWidth} setDisplay={setDisplayMain} />}
       </div>
       <div className="showcase__animation showcase__animation_tablet">
-        <motion.div
-          className="showcase__animation-col"
-          ref={refDeskCol1}
-          style={{ display: display1 }}
-          initial={{ transform: 'translateY(-50px)' }}
-          animate={{ transform: 'translateY(0px)' }}
-          transition={{ delay: 0.3, duration: 1 }}
-        >
-          <div className="showcase__animation-col-picture" />
-        </motion.div>
-        <motion.div
-          className="showcase__animation-col"
-          style={{
-            left: '25%',
-            display: display1,
-          }}
-          initial={{ transform: 'translateY(50px)' }}
-          animate={{ transform: 'translateY(0px)' }}
-          transition={{ delay: 0.3, duration: 1 }}
-        >
-          <div
-            className="showcase__animation-col-picture"
-            style={{ backgroundPositionX: `-${deskColWidth}px` }}
-          />
-        </motion.div>
-        <motion.div
-          className="showcase__animation-col"
-          style={{
-            left: '50%',
-            display: display1,
-          }}
-          initial={{ transform: 'translateY(-50px)' }}
-          animate={{ transform: 'translateY(0px)' }}
-          transition={{ delay: 0.3, duration: 1 }}
-        >
-          <div
-            className="showcase__animation-col-picture"
-            style={{ backgroundPositionX: `-${deskColWidth * 2}px` }}
-          />
-        </motion.div>
-        <motion.div
-          className="showcase__animation-col"
-          style={{
-            left: '75%',
-            display: display1,
-          }}
-          initial={{ transform: 'translateY(50px)' }}
-          animate={{ transform: 'translateY(0px)' }}
-          transition={{ delay: 0.3, duration: 1 }}
-        >
-          <div
-            className="showcase__animation-col-picture"
-            style={{ backgroundPositionX: `-${deskColWidth * 3}px` }}
-          />
-        </motion.div>
+        {[...(function* () {
+          for (let i = 0; i < 4; i++) {
+            yield (
+              <motion.div
+                className="showcase__animation-col"
+                ref={i === 0 ? refDeskCol1 : null}
+                style={{
+                  left: `${i * 25}%`,
+                  display: display1,
+                }}
+                initial={{transform: `translateY(${50 * (i % 2 === 0 ? -1 : 1)}px)`}}
+                animate={{transform: 'translateY(0px)'}}
+                transition={{ delay: 0.3, duration: 1 }}
+              >
+                <div
+                  className="showcase__animation-col-picture"
+                  style={{backgroundPositionX: `-${i * deskColWidth}px`}}
+                />
+              </motion.div>
+            );
+          }
+        })()]}
         <motion.div
           className="showcase__animation-col-next"
           initial={{ transform: 'translateY(0px)' }}
