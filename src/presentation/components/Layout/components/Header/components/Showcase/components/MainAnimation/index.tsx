@@ -1,5 +1,5 @@
-import React, { FC, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, {FC, useState} from 'react';
+import {motion} from 'framer-motion';
 
 interface MainAnimationProps {
   setDisplay: (display: boolean) => void;
@@ -7,7 +7,7 @@ interface MainAnimationProps {
   deskColWidth?: number;
 }
 
-const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskColWidth }) => {
+const MainAnimation: FC<MainAnimationProps> = ({mobColWidth, setDisplay, deskColWidth}) => {
   const [display1, setDisplay1] = useState<string>('none');
   const [display2, setDisplay2] = useState<string>('block');
   const [display3, setDisplay3] = useState<string>('none');
@@ -42,77 +42,44 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
     <>
       {deskColWidth ? (
         <>
-          <motion.div
-            className="showcase__animation-col"
-            style={{ display: display2 }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="showcase__animation-col-picture" />
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col"
-            style={{
-              left: '25%',
-              display: display2,
-            }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ duration: 0.7 }}
-          >
-            <div
-              className="showcase__animation-col-picture"
-              style={{ backgroundPositionX: `-${deskColWidth}px` }}
-            />
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col"
-            style={{
-              left: '50%',
-              display: display2,
-            }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ duration: 0.7 }}
-          >
-            <div
-              className="showcase__animation-col-picture"
-              style={{ backgroundPositionX: `-${deskColWidth * 2}px` }}
-            />
-          </motion.div>
-          <motion.div
-            className="showcase__animation-col"
-            style={{
-              left: '75%',
-              display: display2,
-            }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ duration: 0.7 }}
-          >
-            <div
-              className="showcase__animation-col-picture"
-              style={{ backgroundPositionX: `-${deskColWidth * 3}px` }}
-            />
-          </motion.div>
+          {[...(function* () {
+            for (let i = 0; i < 4; i++) {
+              yield (
+                <motion.div
+                  className="showcase__animation-col"
+                  style={{
+                    left: `${i * 25}%`,
+                    display: display2,
+                  }}
+                  initial={{transform: 'translateY(0px)'}}
+                  animate={{transform: `translateY(${50 * (i % 2 === 0 ? 1 : -1)}px)`}}
+                  transition={{duration: 0.7}}
+                >
+                  <div
+                    className="showcase__animation-col-picture"
+                    style={{backgroundPositionX: `-${i * deskColWidth}px`}}
+                  />
+                </motion.div>
+              );
+            }
+          })()]}
           <motion.div
             className="showcase__animation-col-wrap"
-            style={{ display: display2 }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ duration: 1 }}
+            style={{display: display2}}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{duration: 1}}
             >
-              <div className="showcase__animation-col-picture showcase__animation-col-picture_step-2" />
+              <div className="showcase__animation-col-picture showcase__animation-col-picture_step-2"/>
             </motion.div>
           </motion.div>
           <motion.div
@@ -121,22 +88,22 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '25%',
               display: display2,
             }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ duration: 1 }}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{duration: 1}}
             >
               <div
                 className="showcase__animation-col-picture showcase__animation-col-picture_step-2"
-                style={{ backgroundPositionX: `-${deskColWidth}px` }}
+                style={{backgroundPositionX: `-${deskColWidth}px`}}
               />
             </motion.div>
           </motion.div>
@@ -146,22 +113,22 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display2,
             }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ duration: 1 }}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{duration: 1}}
             >
               <div
                 className="showcase__animation-col-picture showcase__animation-col-picture_step-2"
-                style={{ backgroundPositionX: `-${deskColWidth * 2}px` }}
+                style={{backgroundPositionX: `-${deskColWidth * 2}px`}}
               />
             </motion.div>
           </motion.div>
@@ -171,23 +138,23 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '75%',
               display: display2
             }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ duration: 1 }}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{duration: 1}}
               onAnimationComplete={onCompleteSecond}
             >
               <div
                 className="showcase__animation-col-picture showcase__animation-col-picture_step-2"
-                style={{ backgroundPositionX: `-${deskColWidth * 3}px` }}
+                style={{backgroundPositionX: `-${deskColWidth * 3}px`}}
               />
             </motion.div>
           </motion.div>
@@ -196,11 +163,11 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             style={{
               display: display3,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ delay: 3, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(50px)'}}
+            transition={{delay: 3, duration: 0.7}}
           >
-            <div className="showcase__animation-col-picture showcase__animation-col-picture_step-2" />
+            <div className="showcase__animation-col-picture showcase__animation-col-picture_step-2"/>
           </motion.div>
           <motion.div
             className="showcase__animation-col"
@@ -208,13 +175,13 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '25%',
               display: display3,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ delay: 3, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(-50px)'}}
+            transition={{delay: 3, duration: 0.7}}
           >
             <div
               className="showcase__animation-col-picture showcase__animation-col-picture_step-2"
-              style={{ backgroundPositionX: `-${deskColWidth}px` }}
+              style={{backgroundPositionX: `-${deskColWidth}px`}}
             />
           </motion.div>
           <motion.div
@@ -223,13 +190,13 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display3,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ delay: 3, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(50px)'}}
+            transition={{delay: 3, duration: 0.7}}
           >
             <div
               className="showcase__animation-col-picture showcase__animation-col-picture_step-2"
-              style={{ backgroundPositionX: `-${deskColWidth * 2}px` }}
+              style={{backgroundPositionX: `-${deskColWidth * 2}px`}}
             />
           </motion.div>
           <motion.div
@@ -238,13 +205,13 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '75%',
               display: display3,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ delay: 3, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(-50px)'}}
+            transition={{delay: 3, duration: 0.7}}
           >
             <div
               className="showcase__animation-col-picture showcase__animation-col-picture_step-2"
-              style={{ backgroundPositionX: `-${deskColWidth * 3}px` }}
+              style={{backgroundPositionX: `-${deskColWidth * 3}px`}}
             />
           </motion.div>
           <motion.div
@@ -252,20 +219,20 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             style={{
               display: display3,
             }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 3, duration: 1 }}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 3, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 3, duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 3, duration: 1}}
             >
-              <div className="showcase__animation-col-picture showcase__animation-col-picture_step-3" />
+              <div className="showcase__animation-col-picture showcase__animation-col-picture_step-3"/>
             </motion.div>
           </motion.div>
           <motion.div
@@ -274,9 +241,9 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '25%',
               display: display3,
             }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 3, duration: 1 }}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 3, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
@@ -284,13 +251,13 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
                 backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 3, duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 3, duration: 1}}
             >
               <div
                 className="showcase__animation-col-picture showcase__animation-col-picture_step-3"
-                style={{ backgroundPositionX: `-${deskColWidth}px` }}
+                style={{backgroundPositionX: `-${deskColWidth}px`}}
               />
             </motion.div>
           </motion.div>
@@ -300,22 +267,22 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display3,
             }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 3, duration: 1 }}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 3, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 3, duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 3, duration: 1}}
             >
               <div
                 className="showcase__animation-col-picture showcase__animation-col-picture_step-3"
-                style={{ backgroundPositionX: `-${deskColWidth * 2}px` }}
+                style={{backgroundPositionX: `-${deskColWidth * 2}px`}}
               />
             </motion.div>
           </motion.div>
@@ -325,9 +292,9 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '75%',
               display: display3,
             }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 3, duration: 1 }}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 3, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
@@ -335,14 +302,14 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
                 backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 3, duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 3, duration: 1}}
               onAnimationComplete={onCompleteThird}
             >
               <div
                 className="showcase__animation-col-picture showcase__animation-col-picture_step-3"
-                style={{ backgroundPositionX: `-${deskColWidth * 3}px` }}
+                style={{backgroundPositionX: `-${deskColWidth * 3}px`}}
               />
             </motion.div>
           </motion.div>
@@ -351,11 +318,11 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             style={{
               display: display4,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ delay: 6, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(50px)'}}
+            transition={{delay: 6, duration: 0.7}}
           >
-            <div className="showcase__animation-col-picture showcase__animation-col-picture_step-3" />
+            <div className="showcase__animation-col-picture showcase__animation-col-picture_step-3"/>
           </motion.div>
           <motion.div
             className="showcase__animation-col"
@@ -363,13 +330,13 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '25%',
               display: display4,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ delay: 6, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(-50px)'}}
+            transition={{delay: 6, duration: 0.7}}
           >
             <div
               className="showcase__animation-col-picture showcase__animation-col-picture_step-3"
-              style={{ backgroundPositionX: `-${deskColWidth}px` }}
+              style={{backgroundPositionX: `-${deskColWidth}px`}}
             />
           </motion.div>
           <motion.div
@@ -378,13 +345,13 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display4,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ delay: 6, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(50px)'}}
+            transition={{delay: 6, duration: 0.7}}
           >
             <div
               className="showcase__animation-col-picture showcase__animation-col-picture_step-3"
-              style={{ backgroundPositionX: `-${deskColWidth * 2}px` }}
+              style={{backgroundPositionX: `-${deskColWidth * 2}px`}}
             />
           </motion.div>
           <motion.div
@@ -393,13 +360,13 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '75%',
               display: display4,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ delay: 6, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(-50px)'}}
+            transition={{delay: 6, duration: 0.7}}
           >
             <div
               className="showcase__animation-col-picture showcase__animation-col-picture_step-3"
-              style={{ backgroundPositionX: `-${deskColWidth * 3}px` }}
+              style={{backgroundPositionX: `-${deskColWidth * 3}px`}}
             />
           </motion.div>
           <motion.div
@@ -407,20 +374,20 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             style={{
               display: display4,
             }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 6, duration: 1 }}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 6, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 6, duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 6, duration: 1}}
             >
-              <div className="showcase__animation-col-picture showcase__animation-col-picture_step-4" />
+              <div className="showcase__animation-col-picture showcase__animation-col-picture_step-4"/>
             </motion.div>
           </motion.div>
           <motion.div
@@ -429,22 +396,22 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '25%',
               display: display4,
             }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 6, duration: 1 }}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 6, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 6, duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 6, duration: 1}}
             >
               <div
                 className="showcase__animation-col-picture showcase__animation-col-picture_step-4"
-                style={{ backgroundPositionX: `-${deskColWidth}px` }}
+                style={{backgroundPositionX: `-${deskColWidth}px`}}
               />
             </motion.div>
           </motion.div>
@@ -454,22 +421,22 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display4,
             }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 6, duration: 1 }}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 6, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 6, duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 6, duration: 1}}
             >
               <div
                 className="showcase__animation-col-picture showcase__animation-col-picture_step-4"
-                style={{ backgroundPositionX: `-${deskColWidth * 2}px` }}
+                style={{backgroundPositionX: `-${deskColWidth * 2}px`}}
               />
             </motion.div>
           </motion.div>
@@ -479,9 +446,9 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '75%',
               display: display4,
             }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 6, duration: 1 }}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 6, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
@@ -489,14 +456,14 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
                 backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 6, duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 6, duration: 1}}
               onAnimationComplete={onCompleteFourth}
             >
               <div
                 className="showcase__animation-col-picture showcase__animation-col-picture_step-4"
-                style={{ backgroundPositionX: `-${deskColWidth * 3}px` }}
+                style={{backgroundPositionX: `-${deskColWidth * 3}px`}}
               />
             </motion.div>
           </motion.div>
@@ -505,11 +472,11 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             style={{
               display: display5,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ delay: 9, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(50px)'}}
+            transition={{delay: 9, duration: 0.7}}
           >
-            <div className="showcase__animation-col-picture showcase__animation-col-picture_step-4" />
+            <div className="showcase__animation-col-picture showcase__animation-col-picture_step-4"/>
           </motion.div>
           <motion.div
             className="showcase__animation-col"
@@ -517,13 +484,13 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '25%',
               display: display5,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ delay: 9, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(-50px)'}}
+            transition={{delay: 9, duration: 0.7}}
           >
             <div
               className="showcase__animation-col-picture showcase__animation-col-picture_step-4"
-              style={{ backgroundPositionX: `-${deskColWidth}px` }}
+              style={{backgroundPositionX: `-${deskColWidth}px`}}
             />
           </motion.div>
           <motion.div
@@ -532,13 +499,13 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display5,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ delay: 9, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(50px)'}}
+            transition={{delay: 9, duration: 0.7}}
           >
             <div
               className="showcase__animation-col-picture showcase__animation-col-picture_step-4"
-              style={{ backgroundPositionX: `-${deskColWidth * 2}px` }}
+              style={{backgroundPositionX: `-${deskColWidth * 2}px`}}
             />
           </motion.div>
           <motion.div
@@ -547,13 +514,13 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '75%',
               display: display5,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ delay: 9, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(-50px)'}}
+            transition={{delay: 9, duration: 0.7}}
           >
             <div
               className="showcase__animation-col-picture showcase__animation-col-picture_step-4"
-              style={{ backgroundPositionX: `-${deskColWidth * 3}px` }}
+              style={{backgroundPositionX: `-${deskColWidth * 3}px`}}
             />
           </motion.div>
           <motion.div
@@ -561,20 +528,20 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             style={{
               display: display5,
             }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 9, duration: 1 }}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 9, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 9, duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 9, duration: 1}}
             >
-              <div className="showcase__animation-col-picture showcase__animation-col-picture_step-5" />
+              <div className="showcase__animation-col-picture showcase__animation-col-picture_step-5"/>
             </motion.div>
           </motion.div>
           <motion.div
@@ -583,22 +550,22 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '25%',
               display: display5,
             }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 9, duration: 1 }}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 9, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 9, duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 9, duration: 1}}
             >
               <div
                 className="showcase__animation-col-picture showcase__animation-col-picture_step-5"
-                style={{ backgroundPositionX: `-${deskColWidth}px` }}
+                style={{backgroundPositionX: `-${deskColWidth}px`}}
               />
             </motion.div>
           </motion.div>
@@ -608,22 +575,22 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display5,
             }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 9, duration: 1 }}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 9, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 9, duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 9, duration: 1}}
             >
               <div
                 className="showcase__animation-col-picture showcase__animation-col-picture_step-5"
-                style={{ backgroundPositionX: `-${deskColWidth * 2}px` }}
+                style={{backgroundPositionX: `-${deskColWidth * 2}px`}}
               />
             </motion.div>
           </motion.div>
@@ -633,9 +600,9 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '75%',
               display: display5,
             }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 9, duration: 1 }}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 9, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
@@ -643,14 +610,14 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
                 backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 9, duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 9, duration: 1}}
               onAnimationComplete={onCompleteFifth}
             >
               <div
                 className="showcase__animation-col-picture showcase__animation-col-picture_step-5"
-                style={{ backgroundPositionX: `-${deskColWidth * 3}px` }}
+                style={{backgroundPositionX: `-${deskColWidth * 3}px`}}
               />
             </motion.div>
           </motion.div>
@@ -659,11 +626,11 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             style={{
               display: display1,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ delay: 12, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(50px)'}}
+            transition={{delay: 12, duration: 0.7}}
           >
-            <div className="showcase__animation-col-picture showcase__animation-col-picture_step-5" />
+            <div className="showcase__animation-col-picture showcase__animation-col-picture_step-5"/>
           </motion.div>
           <motion.div
             className="showcase__animation-col"
@@ -671,13 +638,13 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '25%',
               display: display1,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ delay: 12, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(-50px)'}}
+            transition={{delay: 12, duration: 0.7}}
           >
             <div
               className="showcase__animation-col-picture showcase__animation-col-picture_step-5"
-              style={{ backgroundPositionX: `-${deskColWidth}px` }}
+              style={{backgroundPositionX: `-${deskColWidth}px`}}
             />
           </motion.div>
           <motion.div
@@ -686,13 +653,13 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display1,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ delay: 12, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(50px)'}}
+            transition={{delay: 12, duration: 0.7}}
           >
             <div
               className="showcase__animation-col-picture showcase__animation-col-picture_step-5"
-              style={{ backgroundPositionX: `-${deskColWidth * 2}px` }}
+              style={{backgroundPositionX: `-${deskColWidth * 2}px`}}
             />
           </motion.div>
           <motion.div
@@ -701,13 +668,13 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '75%',
               display: display1,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ delay: 12, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(-50px)'}}
+            transition={{delay: 12, duration: 0.7}}
           >
             <div
               className="showcase__animation-col-picture showcase__animation-col-picture_step-5"
-              style={{ backgroundPositionX: `-${deskColWidth * 3}px` }}
+              style={{backgroundPositionX: `-${deskColWidth * 3}px`}}
             />
           </motion.div>
           <motion.div
@@ -715,20 +682,20 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
             style={{
               display: display1,
             }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 12, duration: 1 }}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 12, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 12, duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 12, duration: 1}}
             >
-              <div className="showcase__animation-col-picture" />
+              <div className="showcase__animation-col-picture"/>
             </motion.div>
           </motion.div>
           <motion.div
@@ -737,22 +704,22 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '25%',
               display: display1,
             }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 12, duration: 1 }}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 12, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 12, duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 12, duration: 1}}
             >
               <div
                 className="showcase__animation-col-picture"
-                style={{ backgroundPositionX: `-${deskColWidth}px` }}
+                style={{backgroundPositionX: `-${deskColWidth}px`}}
               />
             </motion.div>
           </motion.div>
@@ -762,22 +729,22 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display1,
             }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 12, duration: 1 }}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 12, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 12, duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 12, duration: 1}}
             >
               <div
                 className="showcase__animation-col-picture"
-                style={{ backgroundPositionX: `-${deskColWidth * 2}px` }}
+                style={{backgroundPositionX: `-${deskColWidth * 2}px`}}
               />
             </motion.div>
           </motion.div>
@@ -787,23 +754,23 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '75%',
               display: display1,
             }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 12, duration: 1 }}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 12, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 12, duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 12, duration: 1}}
               onAnimationComplete={onCompleteFirst}
             >
               <div
                 className="showcase__animation-col-picture"
-                style={{ backgroundPositionX: `-${deskColWidth * 3}px` }}
+                style={{backgroundPositionX: `-${deskColWidth * 3}px`}}
               />
             </motion.div>
           </motion.div>
@@ -816,9 +783,9 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
               display: display2,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(-50px)'}}
+            transition={{duration: 0.7}}
           />
           <motion.div
             className="showcase__animation-col"
@@ -826,16 +793,16 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display2,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(50px)'}}
+            transition={{duration: 0.7}}
           />
           <motion.div
             className="showcase__animation-col-wrap"
-            style={{ display: display2 }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ duration: 1 }}
+            style={{display: display2}}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{duration: 1}}
           >
             <motion.div
               className="showcase__animation-col showcase__animation-col_step-2"
@@ -843,9 +810,9 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
                 backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{duration: 1}}
             />
           </motion.div>
           <motion.div
@@ -854,18 +821,18 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display2,
             }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ duration: 1 }}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{duration: 1}}
           >
             <motion.div
               className="showcase__animation-col showcase__animation-col_step-2"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{duration: 1}}
               onAnimationComplete={onCompleteSecond}
             />
           </motion.div>
@@ -875,9 +842,9 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
               display: display3,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ delay: 3, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(-50px)'}}
+            transition={{delay: 3, duration: 0.7}}
           />
           <motion.div
             className="showcase__animation-col showcase__animation-col_step-2"
@@ -885,16 +852,16 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display3,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ delay: 3, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(50px)'}}
+            transition={{delay: 3, duration: 0.7}}
           />
           <motion.div
             className="showcase__animation-col-wrap"
-            style={{ display: display3 }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 3, duration: 1 }}
+            style={{display: display3}}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 3, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col showcase__animation-col_step-3"
@@ -902,9 +869,9 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
                 backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 3, duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 3, duration: 1}}
             />
           </motion.div>
           <motion.div
@@ -913,18 +880,18 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display3,
             }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 3, duration: 1 }}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 3, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col showcase__animation-col_step-3"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 3, duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 3, duration: 1}}
               onAnimationComplete={onCompleteThird}
             />
           </motion.div>
@@ -934,9 +901,9 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
               display: display4,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ delay: 6, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(-50px)'}}
+            transition={{delay: 6, duration: 0.7}}
           />
           <motion.div
             className="showcase__animation-col showcase__animation-col_step-3"
@@ -944,16 +911,16 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display4,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ delay: 6, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(50px)'}}
+            transition={{delay: 6, duration: 0.7}}
           />
           <motion.div
             className="showcase__animation-col-wrap"
-            style={{ display: display4 }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 6, duration: 1 }}
+            style={{display: display4}}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 6, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col showcase__animation-col_step-4"
@@ -961,9 +928,9 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
                 backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 6, duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 6, duration: 1}}
             />
           </motion.div>
           <motion.div
@@ -972,18 +939,18 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display4,
             }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 6, duration: 1 }}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 6, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col showcase__animation-col_step-4"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 6, duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 6, duration: 1}}
               onAnimationComplete={onCompleteFourth}
             />
           </motion.div>
@@ -993,9 +960,9 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
               display: display5,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ delay: 9, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(-50px)'}}
+            transition={{delay: 9, duration: 0.7}}
           />
           <motion.div
             className="showcase__animation-col showcase__animation-col_step-4"
@@ -1003,16 +970,16 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display5,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ delay: 9, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(50px)'}}
+            transition={{delay: 9, duration: 0.7}}
           />
           <motion.div
             className="showcase__animation-col-wrap"
-            style={{ display: display5 }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 9, duration: 1 }}
+            style={{display: display5}}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 9, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col showcase__animation-col_step-5"
@@ -1020,9 +987,9 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
                 backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 9, duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 9, duration: 1}}
             />
           </motion.div>
           <motion.div
@@ -1031,18 +998,18 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display5,
             }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 9, duration: 1 }}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 9, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col showcase__animation-col_step-5"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 9, duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 9, duration: 1}}
               onAnimationComplete={onCompleteFifth}
             />
           </motion.div>
@@ -1052,9 +1019,9 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
               display: display1,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(-50px)' }}
-            transition={{ delay: 12, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(-50px)'}}
+            transition={{delay: 12, duration: 0.7}}
           />
           <motion.div
             className="showcase__animation-col showcase__animation-col_step-5"
@@ -1062,16 +1029,16 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display1,
             }}
-            initial={{ transform: 'translateY(0px)' }}
-            animate={{ transform: 'translateY(50px)' }}
-            transition={{ delay: 12, duration: 0.7 }}
+            initial={{transform: 'translateY(0px)'}}
+            animate={{transform: 'translateY(50px)'}}
+            transition={{delay: 12, duration: 0.7}}
           />
           <motion.div
             className="showcase__animation-col-wrap"
-            style={{ display: display1 }}
-            initial={{ transform: 'translateY(100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 12, duration: 1 }}
+            style={{display: display1}}
+            initial={{transform: 'translateY(100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 12, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
@@ -1079,9 +1046,9 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
                 backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(-100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 12, duration: 1 }}
+              initial={{transform: 'translateY(-100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 12, duration: 1}}
             />
           </motion.div>
           <motion.div
@@ -1090,18 +1057,18 @@ const MainAnimation: FC<MainAnimationProps> = ({ mobColWidth, setDisplay, deskCo
               left: '50%',
               display: display1,
             }}
-            initial={{ transform: 'translateY(-100%)' }}
-            animate={{ transform: 'translateY(-7%)' }}
-            transition={{ delay: 12, duration: 1 }}
+            initial={{transform: 'translateY(-100%)'}}
+            animate={{transform: 'translateY(-7%)'}}
+            transition={{delay: 12, duration: 1}}
           >
             <motion.div
               className="showcase__animation-col"
               style={{
                 width: '100%',
               }}
-              initial={{ transform: 'translateY(100%)' }}
-              animate={{ transform: 'translateY(8.4%)' }}
-              transition={{ delay: 12, duration: 1 }}
+              initial={{transform: 'translateY(100%)'}}
+              animate={{transform: 'translateY(8.4%)'}}
+              transition={{delay: 12, duration: 1}}
               onAnimationComplete={onCompleteFirst}
             />
           </motion.div>
