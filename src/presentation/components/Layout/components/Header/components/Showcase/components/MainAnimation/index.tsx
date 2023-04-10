@@ -1,6 +1,11 @@
 import React, {FC, useState} from 'react';
 import {motion} from 'framer-motion';
-import Slide from '../Slide';
+import Step from '../Step';
+import slide1 from '../../assets/Hero.webp';
+import slide2 from '../../assets/Hero1.webp';
+import slide3 from '../../assets/Hero2.webp';
+import slide4 from '../../assets/Hero3.webp';
+import slide5 from '../../assets/Hero4.webp';
 
 interface MainAnimationProps {
   setDisplay: (display: boolean) => void;
@@ -14,6 +19,14 @@ const MainAnimation: FC<MainAnimationProps> = ({mobColWidth, setDisplay, deskCol
   const [display3, setDisplay3] = useState<string>('none');
   const [display4, setDisplay4] = useState<string>('none');
   const [display5, setDisplay5] = useState<string>('none');
+
+  const display = [
+    display2,
+    display3,
+    display4,
+    display5,
+    display1,
+  ];
 
   const onCompleteFirst = () => {
     window.setTimeout(() => setDisplay(false), 2000);
@@ -39,76 +52,53 @@ const MainAnimation: FC<MainAnimationProps> = ({mobColWidth, setDisplay, deskCol
     setDisplay1('block');
   };
 
+  const data = [
+    {
+      imageFirst: slide1,
+      imageSecond: slide2,
+      onComplete: onCompleteSecond,
+    },
+
+    {
+      imageFirst: slide2,
+      imageSecond: slide3,
+      onComplete: onCompleteThird,
+    },
+
+    {
+      imageFirst: slide3,
+      imageSecond: slide4,
+      onComplete: onCompleteFourth,
+    },
+
+    {
+      imageFirst: slide4,
+      imageSecond: slide5,
+      onComplete: onCompleteFifth,
+    },
+
+    {
+      imageFirst: slide5,
+      imageSecond: slide1,
+      onComplete: onCompleteFirst,
+    },
+  ];
+
   return (
     <>
       {deskColWidth ? (
         <>
-          <Slide
-            display={display2}
-            colWidth={deskColWidth}
-          />
-          <Slide
-            display={display2}
-            colWidth={deskColWidth}
-            wrapped={true}
-            onAnimationComplete={onCompleteSecond}
-            pictureClassName="showcase__animation-col-picture_step-2"
-          />
-          <Slide
-            display={display3}
-            colWidth={deskColWidth}
-            delay={3}
-            pictureClassName="showcase__animation-col-picture_step-2"
-          />
-          <Slide
-            display={display3}
-            colWidth={deskColWidth}
-            wrapped={true}
-            onAnimationComplete={onCompleteThird}
-            delay={3}
-            pictureClassName="showcase__animation-col-picture_step-3"
-          />
-          <Slide
-            display={display4}
-            colWidth={deskColWidth}
-            delay={6}
-            pictureClassName="showcase__animation-col-picture_step-3"
-          />
-          <Slide
-            display={display4}
-            colWidth={deskColWidth}
-            wrapped={true}
-            onAnimationComplete={onCompleteFourth}
-            delay={6}
-            pictureClassName="showcase__animation-col-picture_step-4"
-          />
-          <Slide
-            display={display5}
-            colWidth={deskColWidth}
-            delay={9}
-            pictureClassName="showcase__animation-col-picture_step-4"
-          />
-          <Slide
-            display={display5}
-            colWidth={deskColWidth}
-            wrapped={true}
-            onAnimationComplete={onCompleteFifth}
-            delay={9}
-            pictureClassName="showcase__animation-col-picture_step-5"
-          />
-          <Slide
-            display={display1}
-            colWidth={deskColWidth}
-            delay={12}
-            pictureClassName="showcase__animation-col-picture_step-5"
-          />
-          <Slide
-            display={display1}
-            colWidth={deskColWidth}
-            wrapped={true}
-            onAnimationComplete={onCompleteFirst}
-            delay={12}
-          />
+          {data.map(({ imageFirst, imageSecond, onComplete }, index) => (
+            <Step
+              key={`slide${index}`}
+              display={display[index]}
+              colWidth={deskColWidth}
+              picture1={imageFirst}
+              picture2={imageSecond}
+              onAnimationComplete={onComplete}
+              delay={index * 3}
+            />
+          ))}
         </>
       ) : (
         <>

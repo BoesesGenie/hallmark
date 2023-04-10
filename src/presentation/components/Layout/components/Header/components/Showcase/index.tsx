@@ -89,6 +89,7 @@ const Showcase: FC = () => {
           for (let i = 0; i < 4; i++) {
             yield (
               <motion.div
+                key={`prev${i}`}
                 className="showcase__animation-col"
                 ref={i === 0 ? refDeskCol1 : null}
                 style={{
