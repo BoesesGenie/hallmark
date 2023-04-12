@@ -9,7 +9,6 @@ const Showcase: FC = () => {
   const refDeskCol1 = useRef<HTMLDivElement>(null);
   const [mobColWidth, setMobColWidth] = useState<number>(0);
   const [deskColWidth, setDeskColWidth] = useState<number>(0);
-  const [display1, setDisplay1] = useState<string>('block');
   const [displayMain, setDisplayMain] = useState<boolean | undefined>(undefined);
 
   useEffect(() => {
@@ -38,7 +37,6 @@ const Showcase: FC = () => {
 
   const onCompleteFirst = () => {
     window.setTimeout(() => {
-      setDisplay1('none');
       setDisplayMain(true);
     }, 1700);
   };
@@ -50,7 +48,6 @@ const Showcase: FC = () => {
           className="showcase__animation-col"
           style={{
             backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
-            display: display1,
           }}
           ref={refMobCol1}
           initial={{ transform: 'translateY(50px)' }}
@@ -62,7 +59,6 @@ const Showcase: FC = () => {
           className="showcase__animation-col"
           style={{
             left: '50%',
-            display: display1,
           }}
           initial={{ transform: 'translateY(-50px)' }}
           animate={{ transform: 'translateY(0px)' }}
@@ -94,7 +90,6 @@ const Showcase: FC = () => {
                 ref={i === 0 ? refDeskCol1 : null}
                 style={{
                   left: `${i * 25}%`,
-                  display: display1,
                 }}
                 initial={{transform: `translateY(${50 * (i % 2 === 0 ? -1 : 1)}px)`}}
                 animate={{transform: 'translateY(0px)'}}

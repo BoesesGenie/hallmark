@@ -29,6 +29,7 @@ const MainAnimation: FC<MainAnimationProps> = ({mobColWidth, setDisplay, deskCol
   ];
 
   const onCompleteFirst = () => {
+    setDisplay1('none');
     window.setTimeout(() => setDisplay(false), 2000);
   };
 
