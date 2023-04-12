@@ -39,7 +39,7 @@ const SlidePart: FC<SlidePartProps> = ({
       <div
         className="showcase__animation-col-picture"
         style={{
-          backgroundPositionX: `-${index * colWidth}px`,
+          backgroundPositionX: `calc(50% - ${index * colWidth}px)`,
           backgroundImage: `url(${picture})`,
         }}
       />

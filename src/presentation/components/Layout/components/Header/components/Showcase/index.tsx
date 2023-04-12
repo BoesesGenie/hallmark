@@ -97,7 +97,7 @@ const Showcase: FC = () => {
               >
                 <div
                   className="showcase__animation-col-picture"
-                  style={{backgroundPositionX: `-${i * deskColWidth}px`}}
+                  style={{backgroundPositionX: `calc(50% - ${i * deskColWidth}px)`}}
                 />
               </motion.div>
             );
