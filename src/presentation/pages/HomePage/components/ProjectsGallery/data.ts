@@ -1,7 +1,8 @@
-import photo1 from './assets/photo1.jpg';
-import photo2 from './assets/photo2.jpg';
-import photo3 from './assets/photo3.jpg';
-import photo4 from './assets/photo4.jpg';
+import photo1 from './assets/photo1.webp';
+import photo2 from './assets/photo2.webp';
+import photo3 from './assets/photo3.webp';
+import photo4 from './assets/photo4.webp';
+import photo5 from './assets/photo5.webp';
 
 const data = [
   {
@@ -11,18 +12,23 @@ const data = [
   },
   {
     id: 2,
-    title: 'Surrey Pretrial Service Centre 2',
+    title: 'Simon Fraser University',
     image: photo2,
   },
   {
     id: 3,
-    title: 'Surrey Pretrial Service Centre 3',
+    title: 'Meadowood Community Centre',
     image: photo3,
   },
   {
     id: 4,
-    title: 'Surrey Pretrial Service Centre 4',
+    title: 'Lake Trail Middle School',
     image: photo4,
+  },
+  {
+    id: 5,
+    title: 'MacKenzie Village Plaza',
+    image: photo5,
   },
 ] as const;
 
