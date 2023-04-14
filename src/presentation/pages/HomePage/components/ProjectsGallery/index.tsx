@@ -12,9 +12,13 @@ const ProjectsGallery: FC = () => {
   const [prevTitle, setPrevTitle] = useState<string>(data[0].title);
   const [nextTitle, setNextTitle] = useState<string>('');
   const controls = useAnimationControls();
+  const [direction, setDirection] = useState<'left' | 'right'>('right');
 
   const onClick = (direction: 'left' | 'right') => {
+
+
     return () => {
+      setDirection(direction);
       if ((direction === 'left' && activeImage === data[0].id)
         || (direction === 'right' && activeImage === data[data.length - 1].id)
       ) {
@@ -27,9 +31,11 @@ const ProjectsGallery: FC = () => {
         mult = -(activeImage - 2);
       }
 
-      controls.start({
-        transform: `translateX(calc(${mult * 100}% + ${mult * 8}px))`,
-      } as any);
+      window.setTimeout(() => {
+        controls.start({
+          transform: `translateX(calc(${mult * 100}% + ${mult * 8}px))`,
+        } as any);
+      }, 0);
       
       const nextActive = direction === 'right' ? activeImage + 1 : activeImage - 1;
 
@@ -50,12 +56,14 @@ const ProjectsGallery: FC = () => {
         <Typo.H1 className="projects-gallery__title">Our ProJects</Typo.H1>
       </ContentAppear>
       <div className="projects-gallery__images">
-        {data.map(({ id, image, title }) => {
+        {data.map(({ id, image, title }, index) => {
           let className = 'projects-gallery__image-container';
           
           if (id === activeImage) {
             className += ' projects-gallery__image-container_active';
           }
+
+          const delay =  0.1 * (direction === 'right' ? index : (data.length - index % data.length));
 
           return (
             <motion.div
@@ -63,6 +71,7 @@ const ProjectsGallery: FC = () => {
               className={className}
               animate={controls}
               transition={{
+                delay,
                 type: 'linear',
                 duration: 0.7,
               }}
