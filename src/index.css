@@ -31,3 +31,42 @@ img {
 .fixedPos {
   margin: 0; height: 100%; overflow: hidden;
 }
+
+button {
+  cursor: pointer;
+}
+
+.wp-block-gallery {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  gap: 16px;
+}
+
+.wp-block-image {
+  margin: 0;
+  position: relative;
+}
+
+.wp-block-image img {
+  flex: 1 0 0;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.wp-block-image figcaption {
+  background: linear-gradient(0deg,rgba(0,0,0,.7),rgba(0,0,0,.3) 70%,transparent);
+  bottom: 0;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 13px;
+  left: 0;
+  margin-bottom: 0;
+  max-height: 60%;
+  overflow: auto;
+  padding: 0 8px 8px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
