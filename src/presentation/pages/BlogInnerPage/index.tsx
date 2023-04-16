@@ -2,14 +2,15 @@ import React, {FC} from 'react';
 import {useNavigate} from 'react-router-dom';
 import ROUTES from '../../../application/router/routes';
 import usePost from '../../../application/hooks/usePost';
+import usePostsList from '../../../application/hooks/usePostsList';
 import Layout from '../../components/Layout';
 import {Button, Typo} from '../../ui-kit';
-import image from './assets/image.png';
 import './styles.sass';
 
 const BlogInnerPage: FC = () => {
   const navigate = useNavigate();
   const {isPending, post} = usePost();
+  const {isPending: isListPending, postsList} = usePostsList();
 
   const onAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -19,7 +20,7 @@ const BlogInnerPage: FC = () => {
     return false;
   };
 
-  if (isPending) {
+  if (isPending || isListPending) {
     return null;
   }
 
@@ -44,27 +45,14 @@ const BlogInnerPage: FC = () => {
         <section className="blog-inner-page__list">
           <h3 className="blog-inner-page__list-header">Read more from Hallmark Hardware</h3>
           <div className="blog-inner-page__posts">
-            <a href={`${ROUTES.blog}/1`} onClick={onAnchorClick} className="blog-inner-page__list-post-link">
-              <article>
-                <img src={image} alt="Hallmark" className="blog-inner-page__list-image"/>
-                <h4 className="blog-inner-page__list-title">The Importance of Proper Door Hardware for Building
-                  Security</h4>
-              </article>
-            </a>
-            <a href={`${ROUTES.blog}/1`} onClick={onAnchorClick} className="blog-inner-page__list-post-link">
-              <article>
-                <img src={image} alt="Hallmark" className="blog-inner-page__list-image"/>
-                <h4 className="blog-inner-page__list-title">The Importance of Proper Door Hardware for Building
-                  Security</h4>
-              </article>
-            </a>
-            <a href={`${ROUTES.blog}/1`} onClick={onAnchorClick} className="blog-inner-page__list-post-link">
-              <article>
-                <img src={image} alt="Hallmark" className="blog-inner-page__list-image"/>
-                <h4 className="blog-inner-page__list-title">The Importance of Proper Door Hardware for Building
-                  Security</h4>
-              </article>
-            </a>
+            {postsList.slice(0, 3).map((post) => (
+              <a href={`${ROUTES.blog}/${post.id}`} key={post.id} onClick={onAnchorClick} className="blog-inner-page__list-post-link">
+                <article>
+                  <img src={post.featuredImage} alt={post.title} className="blog-inner-page__list-image"/>
+                  <h4 className="blog-inner-page__list-title">{post.title}</h4>
+                </article>
+              </a>
+            ))}
           </div>
         </section>
       </div>

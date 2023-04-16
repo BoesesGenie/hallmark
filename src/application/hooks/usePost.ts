@@ -9,6 +9,8 @@ const usePost = () => {
   const [post, setPost] = useState(new Post());
 
   useEffect(() => {
+    setIsPending(true);
+
     (async () => {
       if (!postId) {
         throw new Error('Undefined Post ID');
