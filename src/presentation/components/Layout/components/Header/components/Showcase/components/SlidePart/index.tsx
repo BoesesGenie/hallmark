@@ -39,8 +39,9 @@ const SlidePart: FC<SlidePartProps> = ({
       <div
         className="showcase__animation-col-picture"
         style={{
+          background: `linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${picture}) no-repeat`,
           backgroundPositionX: `calc(50% - ${index * colWidth}px)`,
-          backgroundImage: `url(${picture})`,
+          backgroundSize: 'cover',
         }}
       />
     </motion.div>
