@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import {useLocation} from 'react-router-dom';
 import { motion, useAnimationControls } from 'framer-motion';
 import { ReactComponent as Logo }  from './assets/logo.svg';
 import './styles.sass';
@@ -14,6 +15,35 @@ const Loader: FC<LoaderProps> = ({ setShowContent }) => {
   const [isAnimationCompleted, setIsAnimationCompleted] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(true);
   const controls = useAnimationControls();
+  const { pathname } = useLocation();
+
+  const checkImagesLoaded = () => {
+    const images = document.querySelectorAll('img');
+    let imagesLoaded= 0;
+    const onImageLoad = () => {
+      imagesLoaded++;
+
+      if (imagesLoaded === images.length) {
+        setIsLoaded(true);
+      }
+    };
+
+    for (let i = 0; i < images.length; i++) {
+      const img = new window.Image();
+      img.src = images[i].src;
+      img.onload = onImageLoad;
+    }
+  };
+
+  useEffect(() => {
+    if (pathname === '/') {
+      return;
+    }
+
+    allIsLoaded = false;
+    setIsAnimationCompleted(false);
+    setShow(true);
+  }, [pathname]);
 
   useEffect(() => {
     if (!allIsLoaded) {
@@ -37,7 +67,7 @@ const Loader: FC<LoaderProps> = ({ setShowContent }) => {
 
   useEffect(() => {
     const onPageLoad = () => {
-      setIsLoaded(true);
+      checkImagesLoaded();
     };
 
     if (document.readyState === 'complete') {
