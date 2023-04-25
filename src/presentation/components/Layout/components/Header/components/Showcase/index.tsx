@@ -10,7 +10,26 @@ const Showcase: FC = () => {
   const [mobColWidth, setMobColWidth] = useState<number>(0);
   const [deskColWidth, setDeskColWidth] = useState<number>(0);
   const [displayMain, setDisplayMain] = useState<boolean | undefined>(undefined);
+  const [windowSize, setWindowSize] = useState({
+    width: 0,
+    height: 0,
+  });
 
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
   useEffect(() => {
     if (displayMain === undefined || displayMain) {
       return;
@@ -25,9 +44,9 @@ const Showcase: FC = () => {
     }
 
     setShowcaseWidth(showcaseRef.current?.clientWidth);
-    setMobColWidth(showcaseRef.current?.clientWidth / 2);
+    setMobColWidth(windowSize.width / 2);
     setDeskColWidth(showcaseRef.current?.clientWidth / 4);
-  }, [showcaseRef.current?.clientWidth]);
+  }, [windowSize]);
 
   const onCompleteFirst = () => {
     window.setTimeout(() => {
