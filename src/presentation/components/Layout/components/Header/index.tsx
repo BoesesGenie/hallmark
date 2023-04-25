@@ -14,12 +14,23 @@ const Header: FC<HeaderProps> = ({ withShowcase = false }) => {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const [headerTopClass, setHeaderTopClass] = useState<string>('header__top');
+  const [tabIsVisible, setTabIsVisible] = useState(true);
   const iconDark = !isInView || !withShowcase;
   let mixedClassName = 'header';
 
   if (!withShowcase) {
     mixedClassName += ' header_without-showcase';
   }
+
+  useEffect(() => {
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        setTabIsVisible(false);
+      } else {
+        setTabIsVisible(true);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     if (!isInView || !withShowcase) {
@@ -33,7 +44,7 @@ const Header: FC<HeaderProps> = ({ withShowcase = false }) => {
 
   return (
     <header className={mixedClassName} ref={ref}>
-      {withShowcase && (
+      {withShowcase && tabIsVisible && (
         <Showcase />
       )}
       <div className={headerTopClass}>
