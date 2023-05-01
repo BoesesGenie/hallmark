@@ -59,105 +59,107 @@ const Showcase: FC = () => {
     <div className="showcase" ref={showcaseRef}>
       {isInView ? (
         <>
-          {showcaseWidth < 768 ? (
-            <div className="showcase__animation showcase__animation_mobile">
-              <motion.div
-                className="showcase__animation-col"
-                style={{
-                  backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
-                }}
-                initial={{transform: 'translateY(50px)'}}
-                animate={{transform: 'translateY(0px)'}}
-                transition={{delay: 0.3, duration: 1}}
-                onAnimationComplete={onCompleteFirst}
-              />
-              <motion.div
-                className="showcase__animation-col"
-                style={{
-                  left: '50%',
-                }}
-                initial={{transform: 'translateY(-50px)'}}
-                animate={{transform: 'translateY(0px)'}}
-                transition={{delay: 0.3, duration: 1}}
-              />
-              <motion.div
-                className="showcase__animation-col-next"
-                style={{background: 'linear-gradient(20deg, transparent 10%, #fff 10% 90%)'}}
-                initial={{transform: 'translateY(0px)'}}
-                animate={{transform: 'translateY(-100vh)'}}
-                transition={{duration: 1}}
-              />
-              <motion.div
-                className="showcase__animation-col-next"
-                style={{left: '50%'}}
-                initial={{transform: 'translateY(0px)'}}
-                animate={{transform: 'translateY(100vh)'}}
-                transition={{duration: 1}}
-              />
-              {displayMain && <MainAnimation mobColWidth={mobColWidth} setDisplay={setDisplayMain}/>}
-            </div>
-          ) : (
-            <div className="showcase__animation showcase__animation_tablet">
-              {[...(function* () {
-                for (let i = 0; i < 4; i++) {
-                  const onComplete = i === 0 ? onCompleteFirst : () => null;
+          <div className="showcase__animation">
+            {showcaseWidth < 768 ? (
+              <>
+                <motion.div
+                  className="showcase__animation-col"
+                  style={{
+                    backgroundPositionX: `calc(50% + ${mobColWidth}px)`,
+                  }}
+                  initial={{transform: 'translateY(50px)'}}
+                  animate={{transform: 'translateY(0px)'}}
+                  transition={{delay: 0.3, duration: 1}}
+                  onAnimationComplete={onCompleteFirst}
+                />
+                <motion.div
+                  className="showcase__animation-col"
+                  style={{
+                    left: '50%',
+                  }}
+                  initial={{transform: 'translateY(-50px)'}}
+                  animate={{transform: 'translateY(0px)'}}
+                  transition={{delay: 0.3, duration: 1}}
+                />
+                <motion.div
+                  className="showcase__animation-col-next"
+                  style={{background: 'linear-gradient(20deg, transparent 10%, #fff 10% 90%)'}}
+                  initial={{transform: 'translateY(0px)'}}
+                  animate={{transform: 'translateY(-100vh)'}}
+                  transition={{duration: 1}}
+                />
+                <motion.div
+                  className="showcase__animation-col-next"
+                  style={{left: '50%'}}
+                  initial={{transform: 'translateY(0px)'}}
+                  animate={{transform: 'translateY(100vh)'}}
+                  transition={{duration: 1}}
+                />
+                {displayMain && <MainAnimation mobColWidth={mobColWidth} setDisplay={setDisplayMain}/>}
+              </>
+            ) : (
+              <>
+                {[...(function* () {
+                  for (let i = 0; i < 4; i++) {
+                    const onComplete = i === 0 ? onCompleteFirst : () => null;
 
-                  yield (
-                    <motion.div
-                      key={`prev${i}`}
-                      className="showcase__animation-col"
-                      style={{
-                        left: `${i * 25}%`,
-                      }}
-                      initial={{transform: `translateY(${50 * (i % 2 === 0 ? -1 : 1)}px)`}}
-                      animate={{transform: 'translateY(0px)'}}
-                      transition={{delay: 0.3, duration: 1}}
-                      onAnimationComplete={onComplete}
-                    >
-                      <div
-                        className="showcase__animation-col-picture"
-                        style={{backgroundPositionX: `calc(50% - ${i * deskColWidth}px)`}}
-                      />
-                    </motion.div>
-                  );
-                }
-              })()]}
-              <motion.div
-                className="showcase__animation-col-next"
-                initial={{transform: 'translateY(0px)'}}
-                animate={{transform: 'translateY(100vh)'}}
-                transition={{duration: 1}}
-              />
-              <motion.div
-                className="showcase__animation-col-next"
-                style={{
-                  left: '25%',
-                  background: 'linear-gradient(20deg, transparent 20%, #fff 20% 80%)',
-                }}
-                initial={{transform: 'translateY(0px)'}}
-                animate={{transform: 'translateY(-100vh)'}}
-                transition={{duration: 1}}
-              />
-              <motion.div
-                className="showcase__animation-col-next"
-                style={{left: '50%'}}
-                initial={{transform: 'translateY(0px)'}}
-                animate={{transform: 'translateY(100vh)'}}
-                transition={{duration: 1}}
-              />
-              <motion.div
-                className="showcase__animation-col-next"
-                style={{
-                  left: '75%',
-                  background: 'linear-gradient(20deg, transparent 20%, #fff 20% 80%)',
-                }}
-                initial={{transform: 'translateY(0px)'}}
-                animate={{transform: 'translateY(-100vh)'}}
-                transition={{duration: 1}}
-              />
-              {displayMain && <MainAnimation deskColWidth={deskColWidth} setDisplay={setDisplayMain}/>}
-            </div>
-          )}
+                    yield (
+                      <motion.div
+                        key={`prev${i}`}
+                        className="showcase__animation-col"
+                        style={{
+                          left: `${i * 25}%`,
+                        }}
+                        initial={{transform: `translateY(${50 * (i % 2 === 0 ? -1 : 1)}px)`}}
+                        animate={{transform: 'translateY(0px)'}}
+                        transition={{delay: 0.3, duration: 1}}
+                        onAnimationComplete={onComplete}
+                      >
+                        <div
+                          className="showcase__animation-col-picture"
+                          style={{backgroundPositionX: `calc(50% - ${i * deskColWidth}px)`}}
+                        />
+                      </motion.div>
+                    );
+                  }
+                })()]}
+                <motion.div
+                  className="showcase__animation-col-next"
+                  initial={{transform: 'translateY(0px)'}}
+                  animate={{transform: 'translateY(100vh)'}}
+                  transition={{duration: 1}}
+                />
+                <motion.div
+                  className="showcase__animation-col-next"
+                  style={{
+                    left: '25%',
+                    background: 'linear-gradient(20deg, transparent 20%, #fff 20% 80%)',
+                  }}
+                  initial={{transform: 'translateY(0px)'}}
+                  animate={{transform: 'translateY(-100vh)'}}
+                  transition={{duration: 1}}
+                />
+                <motion.div
+                  className="showcase__animation-col-next"
+                  style={{left: '50%'}}
+                  initial={{transform: 'translateY(0px)'}}
+                  animate={{transform: 'translateY(100vh)'}}
+                  transition={{duration: 1}}
+                />
+                <motion.div
+                  className="showcase__animation-col-next"
+                  style={{
+                    left: '75%',
+                    background: 'linear-gradient(20deg, transparent 20%, #fff 20% 80%)',
+                  }}
+                  initial={{transform: 'translateY(0px)'}}
+                  animate={{transform: 'translateY(-100vh)'}}
+                  transition={{duration: 1}}
+                />
+                {displayMain && <MainAnimation deskColWidth={deskColWidth} setDisplay={setDisplayMain}/>}
+              </>
+            )}
+          </div>
           {displayMain ? (
             <TitleAnimation/>
           ) : (
@@ -168,7 +170,7 @@ const Showcase: FC = () => {
                   animate={{transform: 'translateY(0%)'}}
                   transition={{duration: 1}}
                 >
-                  Doors and
+                    Doors and
                 </motion.div>
               </div>
               <div className="showcase__title-animation">
@@ -177,7 +179,7 @@ const Showcase: FC = () => {
                   animate={{transform: 'translateY(0%)'}}
                   transition={{duration: 1}}
                 >
-                  hardware for
+                    hardware for
                 </motion.div>
               </div>
               <div className="showcase__title-animation">
@@ -186,7 +188,7 @@ const Showcase: FC = () => {
                   animate={{transform: 'translateY(0%)'}}
                   transition={{duration: 1}}
                 >
-                  residential
+                    residential
                 </motion.div>
               </div>
               <div className="showcase__title-animation">
@@ -195,7 +197,7 @@ const Showcase: FC = () => {
                   animate={{transform: 'translateY(0%)'}}
                   transition={{duration: 1}}
                 >
-                  construction
+                    construction
                 </motion.div>
               </div>
               <div className="showcase__title-animation">
@@ -204,15 +206,18 @@ const Showcase: FC = () => {
                   animate={{transform: 'translateY(0%)'}}
                   transition={{duration: 1}}
                 >
-                  industries
+                    industries
                 </motion.div>
               </div>
             </div>
           )}
         </>
-      ) : null}
+      ) :
+        null
+      }
     </div>
-  );
+  )
+  ;
 };
 
 export default Showcase;

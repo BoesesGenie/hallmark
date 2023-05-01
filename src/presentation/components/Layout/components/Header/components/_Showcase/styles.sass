@@ -15,6 +15,9 @@
     width: 100%
     overflow: hidden
 
+    &_tablet
+      display: none
+
   &__animation-col
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./assets/Hero.webp') 50% top no-repeat
     background-size: cover
@@ -79,6 +82,13 @@
 
 @media (min-width: breakpoints.$breakpoint-tablet)
   .showcase
+    &__animation
+      &_mobile
+        display: none
+
+      &_tablet
+        display: block
+
     &__animation-col
       background: none
       width: 25%
