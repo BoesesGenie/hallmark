@@ -3,6 +3,7 @@ import photo2 from '../assets/services2.webp';
 import photo3 from '../assets/services3.webp';
 import photo4 from '../assets/services4.webp';
 import photo5 from '../assets/services5.webp';
+import photo6 from '../assets/services6.webp';
 
 const data = [
   {
@@ -29,6 +30,11 @@ const data = [
     title: 'Detention',
     image: photo5,
     text: 'Full range of hollow metal doors and windows modifications, installation and maintenance of Airteq sliding devices, swing locks, detention hardware and pneumatic systems.',
+  },
+  {
+    title: 'AUTO DOOR OPERATORS',
+    image: photo6,
+    text: 'Our company specializes in offering auto door operator (ADO) supply, installation, and maintenance services for residential and commercial buildings, campuses, healthcare and detention facilities. The premium quality products we use are equipped with state-of-the-art microprocessor-based units and a belt-driven mechanism that ensures a quieter and more efficient operation.',
   },
 ];
 
