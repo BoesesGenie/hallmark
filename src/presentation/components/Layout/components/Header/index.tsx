@@ -9,7 +9,7 @@ import { ReactComponent as LogoColored } from './assets/LogoColored.svg';
 import { HeaderProps } from './types';
 import './styles.sass';
 
-const Header: FC<HeaderProps> = ({ withShowcase = false }) => {
+const Header: FC<HeaderProps> = ({ withShowcase = false, isReady = true }) => {
   const navigate = useNavigate();
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -44,7 +44,7 @@ const Header: FC<HeaderProps> = ({ withShowcase = false }) => {
 
   return (
     <header className={mixedClassName} ref={ref}>
-      {withShowcase && tabIsVisible && (
+      {withShowcase && tabIsVisible && isReady && (
         <Showcase />
       )}
       <div className={headerTopClass}>

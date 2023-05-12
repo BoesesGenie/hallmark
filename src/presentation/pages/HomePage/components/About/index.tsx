@@ -42,6 +42,7 @@ const About: FC = () => {
           '--perspective': '150px',
           '--rotateY': '0deg',
         } as any}
+        viewport={{ once: true }}
       >
         <img
           src={about1}

@@ -20,7 +20,7 @@ const Layout: FC<LayoutProps> = ({ withShowcase = false, children }) => {
   return (
     <>
       <Loader setShowContent={setShowHeader} />
-      {showHeader && <Header withShowcase={withShowcase} />}
+      <Header withShowcase={withShowcase} isReady={showHeader} />
       {children}
       <Footer />
     </>

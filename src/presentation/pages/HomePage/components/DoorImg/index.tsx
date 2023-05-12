@@ -25,6 +25,7 @@ const DoorImg: FC<DoorImgProps> = ({ src, alt, delay = 0 }) => (
       transform: 'perspective(150px) rotateY(0deg)',
       transformOrigin: 'left',
     }}
+    viewport={{ once: true }}
   />
 );
 

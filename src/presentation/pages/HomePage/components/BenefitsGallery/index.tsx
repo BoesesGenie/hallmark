@@ -147,6 +147,7 @@ const BenefitsGallery: FC = () => {
             } as any}
             onAnimationStart={onStartDoor}
             onAnimationComplete={onCompleteDoor}
+            viewport={{ once: true }}
           >
             {orderedMain.map(({ id, name, image }) => {
               return (
