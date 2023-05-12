@@ -13,7 +13,8 @@
   &__text
     margin: 16px 0 40px
 
-  &__stamp-colored
+  &__stamp-colored,
+  &__stamp-green
     display: none
 
 @media (min-width: breakpoints.$breakpoint-tablet)
@@ -66,9 +67,13 @@
     &__stamp
       display: none
 
-    &__stamp-colored
+    &__stamp-colored,
+    &__stamp-green
       display: block
       position: absolute
       left: 0
       top: 295px
       width: 195px
+
+    &__stamp-green
+      left: 219px
