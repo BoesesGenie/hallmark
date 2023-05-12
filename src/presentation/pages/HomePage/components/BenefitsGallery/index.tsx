@@ -33,7 +33,7 @@ const BenefitsGallery: FC = () => {
       const nextImage = activeImage % data.length + 1;
 
       doChangeImage(nextImage);
-    }, 3000);
+    }, 2500);
 
     setTimeoutId(currentTimeoutlId);
 
@@ -89,7 +89,7 @@ const BenefitsGallery: FC = () => {
       const nextImage = activeImage < data.length ? activeImage + 1 : 1;
       
       doChangeImage(nextImage);
-    }, 2300);
+    }, 1800);
 
     setTimeoutId(currentTimeoutlId);
   };
