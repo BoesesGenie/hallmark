@@ -1,5 +1,6 @@
 import React, {ChangeEvent, FC, useState} from 'react';
 import { Button, Input, TextArea, Typo } from '../../../../../../ui-kit';
+import successIcon from './assets/success.svg';
 import './styles.sass';
 
 const ContactUsForm: FC = () => {
@@ -52,14 +53,14 @@ const ContactUsForm: FC = () => {
     // const data = await response.json();
 
     setDataSent(true);
+  };
 
-    window.setTimeout(() => {
-      setDataSent(false);
-    }, 3000);
+  const onSuccessClick = () => {
+    setDataSent(false);
   };
 
   return (
-    <section className="contact-us-form" id="contactUs">
+    <section className="contact-us-form">
       <Typo.H2 className="contact-us-form__title">Request a call back</Typo.H2>
       <Input
         label="Phone Number"
@@ -86,7 +87,14 @@ const ContactUsForm: FC = () => {
         onClick={onSubmit}
       >submit request</Button>
       {dataSent && (
-        <p className="contact-us-form__success-message">Data sent</p>
+        <div className="contact-us-form__success">
+          <img src={successIcon} alt="Success" />
+          <p>Thank you for your interest! We'll be following up with you shortly.</p>
+          <Button
+            className="contact-us-form__button"
+            onClick={onSuccessClick}
+          >Got it!</Button>
+        </div>
       )}
     </section>
   );

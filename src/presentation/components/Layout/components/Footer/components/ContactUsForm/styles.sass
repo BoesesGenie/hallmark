@@ -3,6 +3,7 @@
 .contact-us-form
   background: #fff
   padding: 24px
+  position: relative
 
   &__title
     margin-bottom: 32px
@@ -17,8 +18,29 @@
   &__textarea
     margin-bottom: 32px
 
-  &__success-message
-    color: #2A8FFF
+  &__success
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    background: #FFFFFF
+    padding: 24px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+
+    & > p
+      font-family: 'Syncopate', Arial, sans-serif
+      font-weight: 700
+      font-size: 20px
+      line-height: 24px
+      text-align: center
+      text-transform: uppercase
+
+    & > img
+      width: 120px
 
 @media (min-width: breakpoints.$breakpoint-tablet)
   .contact-us-form
@@ -44,6 +66,9 @@
     &__button
       width: 215px
 
+    &__success
+      padding: 74px 40px
+
 @media (min-width: breakpoints.$breakpoint-desktop)
   .contact-us-form
     padding: 40px
@@ -58,3 +83,6 @@
 
     &__textarea
       margin-bottom: 16px
+
+    &__success
+      padding: 74px 40px
